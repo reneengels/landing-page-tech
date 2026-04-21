@@ -314,8 +314,8 @@ input:focus, textarea:focus {
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    width: 28px;
-    height: 20px;
+    width: 34px;
+    height: 24px;
     background: none;
     border: none;
     cursor: pointer;
@@ -333,13 +333,13 @@ input:focus, textarea:focus {
 }
 
 .hamburger.open span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
+    transform: translateY(11px) rotate(45deg);
 }
 .hamburger.open span:nth-child(2) {
     opacity: 0;
 }
 .hamburger.open span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
+    transform: translateY(-11px) rotate(-45deg);
 }
 
 .mobile-cta { display: none; }
@@ -348,6 +348,9 @@ input:focus, textarea:focus {
     .hamburger { display: flex; }
     .desktop-cta { display: none; }
     .mobile-cta { display: list-item; margin-top: 10px; }
+
+    .logo img { height: 42px; }
+    .logo-text { font-size: 1.2rem; }
 
     .nav-links {
         display: flex;
@@ -374,6 +377,10 @@ input:focus, textarea:focus {
 
     .nav-links a {
         font-size: 1.1rem;
+    }
+
+    .mobile-cta .cta-button {
+        color: var(--bg-deep);
     }
 
     .hero h1 { font-size: 3rem; }
