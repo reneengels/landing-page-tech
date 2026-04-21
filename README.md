@@ -1,6 +1,6 @@
-# Engels Tech — Landing Page
+# Landing Page
 
-Landing page institucional da Engels Tech, empresa de consultoria em tecnologia especializada em IA, automações e desenvolvimento Python.
+Landing page institucional de uma empresa de consultoria em tecnologia especializada em IA, automações e desenvolvimento Python.
 
 ## Tecnologias
 
