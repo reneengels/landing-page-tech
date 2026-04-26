@@ -1,0 +1,1495 @@
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Wangflow | Design System</title>
+<script src="assets/resource_3fa48481346f.js"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="assets/css2_66f3f89ececa.css" rel="stylesheet"/>
+<script src="assets/lucide_latest_2eebd0ebe8c2.js"></script>
+<script src="assets/iconify-icon_c867bb11c780.js"></script>
+<style>
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* Custom subtle scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #020617; }
+::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #334155; }
+/* Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+.mask-horizontal-faded {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+/* Design System Nav */
+.ds-nav-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #94a3b8;
+  text-decoration: none;
+  padding: 0.375rem 0.75rem;
+  border-radius: 9999px;
+  transition: color 0.15s, background 0.15s;
+}
+.ds-nav-link:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.05);
+}
+/* DS Section dividers */
+.ds-section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #475569;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 9999px;
+  display: inline-block;
+  margin-bottom: 2.5rem;
+}
+/* Type spec row */
+.type-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  gap: 2rem;
+}
+.type-row:last-child {
+  border-bottom: none;
+}
+.type-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 140px;
+  flex-shrink: 0;
+}
+.type-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.type-spec {
+  font-size: 0.7rem;
+  color: #334155;
+  font-family: 'JetBrains Mono', 'Fira Mono', monospace;
+}
+.type-preview {
+  flex: 1;
+}
+/* Color swatch */
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+.swatch {
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.swatch-color {
+  height: 72px;
+}
+.swatch-info {
+  padding: 0.75rem;
+  background: #111113;
+}
+.swatch-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #94a3b8;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+.swatch-value {
+  font-size: 0.65rem;
+  color: #475569;
+  font-family: monospace;
+}
+/* Motion gallery */
+.motion-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.motion-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.5rem;
+}
+/* Icon grid */
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 0.75rem;
+}
+.icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0.5rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255,255,255,0.05);
+  background: rgba(17,17,19,0.5);
+  cursor: default;
+  transition: background 0.2s, border-color 0.2s;
+}
+.icon-item:hover {
+  background: #151518;
+  border-color: rgba(255,255,255,0.1);
+}
+.icon-name {
+  font-size: 0.6rem;
+  color: #475569;
+  text-align: center;
+  font-family: monospace;
+}
+</style>
+</head>
+<body class="min-h-screen overflow-x-hidden selection:bg-blue-500/30 selection:text-white text-slate-50 bg-[#0a0a0c] relative">
+
+<!-- Ambient Background Gradients -->
+<div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+  <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMiIvPjwvc3ZnPg==')] opacity-[0.3]"></div>
+  <div class="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vh] bg-blue-500/10 blur-[120px] rounded-full mix-blend-screen"></div>
+  <div class="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vh] bg-sky-400/5 blur-[150px] rounded-full mix-blend-screen"></div>
+  <div class="absolute top-[20%] right-[10%] w-[40vw] h-[40vh] bg-slate-700/20 blur-[100px] rounded-full mix-blend-screen"></div>
+</div>
+
+<!-- ============================================================
+     TOP NAVIGATION — Design System Anchor Nav
+     ============================================================ -->
+<nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl">
+  <div class="flex bg-[#111113]/80 border-white/10 border rounded-full pt-2 pr-2 pb-2 pl-3 backdrop-blur-xl items-center justify-between">
+    <div class="flex items-center gap-3 pl-2">
+      <div class="flex w-8 h-8 items-center justify-center">
+        <i class="w-5 h-5 text-blue-400" data-lucide="layers" stroke-width="1.5"></i>
+      </div>
+      <span class="hidden sm:block font-semibold text-lg tracking-tight text-white">Design System</span>
+    </div>
+    <div class="hidden md:flex gap-1 text-base font-medium items-center">
+      <a class="ds-nav-link" href="#hero">Hero</a>
+      <a class="ds-nav-link" href="#typography">Typography</a>
+      <a class="ds-nav-link" href="#colors">Colors</a>
+      <a class="ds-nav-link" href="#components">Components</a>
+      <a class="ds-nav-link" href="#layout">Layout</a>
+      <a class="ds-nav-link" href="#motion">Motion</a>
+      <a class="ds-nav-link" href="#icons">Icons</a>
+    </div>
+    <div class="flex items-center">
+      <a class="hover:bg-slate-200 transition-colors text-base font-semibold text-[#0a0a0c] bg-white rounded-full pt-2.5 pr-6 pb-2.5 pl-6" href="index.html">← Site</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ============================================================
+     SECTION 0 — HERO (Exact Clone, Text Adapted)
+     ============================================================ -->
+<section id="hero">
+<main class="flex flex-col min-h-screen text-center w-full z-10 pt-40 pr-4 pb-24 pl-4 relative items-center justify-center">
+  <!-- Decorative Graph Nodes -->
+  <div class="absolute inset-0 pointer-events-none hidden lg:block overflow-hidden">
+    <!-- Left Node -->
+    <div class="absolute top-[35%] left-[10%] xl:left-[15%]">
+      <div class="flex items-center gap-3">
+        <div class="relative">
+          <div class="w-10 h-10 rounded-full border border-white/15 bg-[#111113] flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
+            <i class="w-5 h-5 text-slate-300" data-lucide="type" stroke-width="1.5"></i>
+          </div>
+          <div class="absolute left-full top-1/2 w-[200px] h-[1px] bg-gradient-to-r from-white/20 to-transparent -translate-y-1/2 rotate-[12deg] origin-left"></div>
+        </div>
+        <div class="text-left mt-[-30px]">
+          <p class="text-base font-semibold text-slate-300">Typography</p>
+          <p class="text-xs text-slate-500">Scales &amp; Hierarchy</p>
+        </div>
+      </div>
+    </div>
+    <!-- Right Node -->
+    <div class="absolute top-[45%] right-[10%] xl:right-[15%]">
+      <div class="flex flex-row-reverse items-center gap-3">
+        <div class="relative">
+          <div class="w-10 h-10 rounded-full border border-white/15 bg-[#111113] flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
+            <i class="w-5 h-5 text-slate-300" data-lucide="palette" stroke-width="1.5"></i>
+          </div>
+          <div class="absolute right-full top-1/2 w-[250px] h-[1px] bg-gradient-to-l from-white/20 to-transparent -translate-y-1/2 -rotate-[8deg] origin-right"></div>
+        </div>
+        <div class="text-right mt-[-40px]">
+          <p class="text-base font-semibold text-slate-300">Colors &amp; Surfaces</p>
+          <p class="text-xs text-slate-500">Dark, Glass &amp; Glow</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Badge -->
+  <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-[#111113]/80 text-slate-300 text-base font-medium mb-10 backdrop-blur-md transition-colors hover:border-white/20 cursor-default">
+    <i class="w-4 h-4 text-blue-400" data-lucide="circle-dashed" stroke-width="1.5"></i>
+    <span>Living Design Reference <i class="inline w-4 h-4 ml-1 opacity-70" data-lucide="arrow-right" stroke-width="1.5"></i></span>
+  </div>
+
+  <!-- H1 — Gradient Heading -->
+  <h1 class="bg-clip-text leading-[1.05] md:text-7xl lg:text-[5.5rem] lg:text-5xl text-5xl font-semibold text-transparent tracking-tight bg-gradient-to-b from-white via-white to-slate-400 max-w-5xl mr-auto mb-8 ml-auto">Every Token, Pattern &amp; <br class="hidden sm:block"/> Motion — In One Place</h1>
+
+  <p class="md:text-2xl leading-relaxed text-lg font-normal text-slate-400 max-w-3xl mr-auto mb-12 ml-auto">
+    The complete visual language of Wangflow. Every class, animation, and component used on the <span class="text-white font-medium">live production site</span> — documented and interactive.
+  </p>
+
+  <!-- Actions -->
+  <div class="flex flex-col sm:flex-row items-center gap-4 relative z-20">
+    <a class="sm:w-auto hover:bg-slate-200 transition-all flex items-center justify-center gap-2 text-lg font-semibold text-[#0a0a0c] bg-white w-full rounded-full pt-4 pr-10 pb-4 pl-10" href="#typography">Explore System</a>
+    <a class="w-full sm:w-auto px-10 py-4 rounded-full bg-transparent border border-white/15 text-white font-semibold text-lg hover:bg-white/5 transition-all flex items-center justify-center" href="index.html">
+      View Live Site
+    </a>
+  </div>
+
+  <!-- Decorative vertical falling lines -->
+  <div class="absolute bottom-32 left-1/2 -translate-x-1/2 w-full max-w-md h-32 flex justify-center gap-8 opacity-20 pointer-events-none">
+    <div class="w-[1px] h-full bg-gradient-to-b from-transparent via-white to-transparent"></div>
+    <div class="w-[1px] h-[80%] mt-4 bg-gradient-to-b from-transparent via-white to-transparent"></div>
+    <div class="w-[1px] h-[60%] mt-8 bg-gradient-to-b from-transparent via-white to-transparent"></div>
+  </div>
+
+  <!-- Bottom Left Scroll Indicator -->
+  <div class="absolute bottom-10 left-10 hidden md:flex items-center gap-3 bg-[#111113]/80 backdrop-blur-md pl-3 pr-5 py-2.5 rounded-full border border-white/10">
+    <div class="w-8 h-8 rounded-full bg-white text-[#0a0a0c] flex items-center justify-center">
+      <i class="w-4 h-4" data-lucide="arrow-down" stroke-width="1.5"></i>
+    </div>
+    <span class="text-base font-semibold text-slate-400 tracking-tight">Scroll down</span>
+  </div>
+</main>
+</section>
+
+
+<!-- ============================================================
+     SECTION 1 — TYPOGRAPHY
+     ============================================================ -->
+<section class="z-10 pt-32 pb-24 px-4 relative" id="typography">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-16">
+      <span class="ds-section-label">01 — Typography</span>
+      <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-6">Type Scale</h2>
+      <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">All text styles in use. No inline overrides — every style derives from the original CSS classes.</p>
+    </div>
+
+    <!-- Type Spec Table -->
+    <div class="bg-[#111113]/60 border border-white/5 rounded-[2rem] overflow-hidden">
+
+      <!-- Heading 1 -->
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Heading 1</span>
+          <span class="type-spec">5xl–[5.5rem] / 1.05<br>semibold · tracking-tight<br>gradient text</span>
+        </div>
+        <div class="type-preview">
+          <h1 class="bg-clip-text leading-[1.05] text-5xl font-semibold text-transparent tracking-tight bg-gradient-to-b from-white via-white to-slate-400">Scale Your Expertise</h1>
+        </div>
+      </div>
+
+      <!-- Heading 2 Large -->
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Heading 2 — Large</span>
+          <span class="type-spec">4xl / 6xl<br>semibold · tracking-tight<br>text-white</span>
+        </div>
+        <div class="type-preview">
+          <h2 class="text-4xl md:text-6xl font-semibold tracking-tight text-white leading-tight">We only win when you do.</h2>
+        </div>
+      </div>
+
+      <!-- Heading 2 -->
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Heading 2</span>
+          <span class="type-spec">4xl / 5xl<br>semibold · tracking-tight<br>text-white</span>
+        </div>
+        <div class="type-preview">
+          <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-0">The numbers don't lie.</h2>
+        </div>
+      </div>
+
+      <!-- Heading 3 -->
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Heading 3</span>
+          <span class="type-spec">3xl<br>semibold · tracking-tight<br>text-white</span>
+        </div>
+        <div class="type-preview">
+          <h3 class="text-3xl font-semibold text-white tracking-tight">$100M+ in Sales Generated</h3>
+        </div>
+      </div>
+
+      <!-- Heading 4 -->
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Heading 4</span>
+          <span class="type-spec">lg (18px)<br>semibold · tracking-tight<br>text-white</span>
+        </div>
+        <div class="type-preview">
+          <h4 class="text-lg font-semibold text-white tracking-tight">Alex River</h4>
+        </div>
+      </div>
+
+      <!-- Stat Number -->
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Stat / Display</span>
+          <span class="type-spec">5xl / 6xl<br>semibold · tracking-tight<br>text-white</span>
+        </div>
+        <div class="type-preview">
+          <span class="md:text-6xl text-5xl font-semibold text-white tracking-tight">$55M+</span>
+        </div>
+      </div>
+
+      <!-- Stat Number Blue -->
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Stat / Accent</span>
+          <span class="type-spec">5xl / 6xl<br>semibold · tracking-tight<br>text-blue-400</span>
+        </div>
+        <div class="type-preview">
+          <span class="text-5xl md:text-6xl font-semibold text-blue-400 tracking-tight">3</span>
+        </div>
+      </div>
+
+      <!-- Paragraph XL -->
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Paragraph XL</span>
+          <span class="type-spec">lg / 2xl<br>normal · leading-relaxed<br>text-slate-400</span>
+        </div>
+        <div class="type-preview">
+          <p class="md:text-2xl leading-relaxed text-lg font-normal text-slate-400 max-w-2xl">We partner with mid-tier creators to turn existing audience trust into an extra <span class="text-white font-medium">$40k–$100k+</span> per year in digital-product revenue.</p>
+        </div>
+      </div>
+
+      <!-- Paragraph L -->
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Paragraph L</span>
+          <span class="type-spec">lg / xl<br>normal · leading-relaxed<br>text-slate-400</span>
+        </div>
+        <div class="type-preview">
+          <p class="text-lg md:text-xl text-slate-400 leading-relaxed max-w-2xl">Frameworks and operational IP stress-tested across our internal brands, now deployed to scale your business organically.</p>
+        </div>
+      </div>
+
+      <!-- Paragraph M / Body -->
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Paragraph M</span>
+          <span class="type-spec">lg<br>normal · leading-relaxed<br>text-slate-300</span>
+        </div>
+        <div class="type-preview">
+          <p class="text-lg text-slate-300 leading-relaxed max-w-2xl">"Wangflow completely changed my monetization strategy. Built a course from my existing content and did <span class="text-white font-medium">$45k in the first month</span>."</p>
+        </div>
+      </div>
+
+      <!-- Paragraph S / Secondary -->
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Paragraph S / Body</span>
+          <span class="type-spec">base (16px)<br>normal<br>text-slate-400</span>
+        </div>
+        <div class="type-preview">
+          <p class="text-base text-slate-400">@alexcreates · Client Access · DM us today</p>
+        </div>
+      </div>
+
+      <!-- Bold M / Inline Emphasis -->
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Bold M / Inline Emphasis</span>
+          <span class="type-spec">inherit size<br>font-medium<br>text-white</span>
+        </div>
+        <div class="type-preview">
+          <p class="text-lg text-slate-400 leading-relaxed">We work on a pure <span class="text-white font-medium">30% lifetime revenue-share model</span> — no retainers, no hidden costs.</p>
+        </div>
+      </div>
+
+      <!-- Label / Overline -->
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Label / Overline</span>
+          <span class="type-spec">base<br>semibold · tracking-[0.2em]<br>uppercase · text-slate-500</span>
+        </div>
+        <div class="type-preview">
+          <p class="uppercase text-base font-semibold text-slate-500 tracking-[0.2em]">Our collective impact to date</p>
+        </div>
+      </div>
+
+      <!-- Badge Text -->
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Badge / Tag Text</span>
+          <span class="type-spec">base<br>font-medium<br>text-slate-300</span>
+        </div>
+        <div class="type-preview">
+          <span class="text-base font-medium text-slate-300">Unlock Your Revenue Potential</span>
+        </div>
+      </div>
+
+      <!-- Small / Caption -->
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Small / Caption</span>
+          <span class="type-spec">xs / sm<br>semibold<br>text-slate-400/500</span>
+        </div>
+        <div class="type-preview">
+          <div class="flex items-center gap-6">
+            <span class="text-sm font-semibold text-slate-400">New sign ups</span>
+            <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded flex items-center gap-1">13.1% <i class="w-3 h-3" data-lucide="arrow-up-right" stroke-width="1.5"></i></span>
+            <span class="text-xs text-slate-500 uppercase tracking-wider font-medium">Client #193</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nav Links -->
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Nav Links</span>
+          <span class="type-spec">base<br>font-medium<br>text-slate-400 → white</span>
+        </div>
+        <div class="type-preview">
+          <div class="flex gap-8 text-base font-medium text-slate-400 items-center">
+            <a class="hover:text-white transition-colors" href="#">Gameplan</a>
+            <a class="hover:text-white transition-colors" href="#">Results</a>
+            <a class="hover:text-white transition-colors" href="#">Model</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 2 — COLORS & SURFACES
+     ============================================================ -->
+<section class="z-10 pt-16 pb-24 px-4 relative" id="colors">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-16">
+      <span class="ds-section-label">02 — Colors &amp; Surfaces</span>
+      <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-6">Palette</h2>
+      <p class="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">All backgrounds, text colors, borders, and gradients extracted directly from the production build.</p>
+    </div>
+
+    <!-- Backgrounds -->
+    <h3 class="text-xl font-semibold text-white mb-6 tracking-tight">Backgrounds</h3>
+    <div class="swatch-grid mb-12">
+      <div class="swatch">
+        <div class="swatch-color bg-[#0a0a0c]"></div>
+        <div class="swatch-info">
+          <span class="swatch-label">Page Background</span>
+          <span class="swatch-value">bg-[#0a0a0c]</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: rgba(17,17,19,0.6)"></div>
+        <div class="swatch-info">
+          <span class="swatch-label">Card — Primary</span>
+          <span class="swatch-value">bg-[#111113]/60</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: rgba(17,17,19,0.5)"></div>
+        <div class="swatch-info">
+          <span class="swatch-label">Card — Secondary</span>
+          <span class="swatch-value">bg-[#111113]/50</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color bg-[#151518]"></div>
+        <div class="swatch-info">
+          <span class="swatch-label">Card — Hover</span>
+          <span class="swatch-value">bg-[#151518]</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: rgba(24,24,27,0.8)"></div>
+        <div class="swatch-info">
+          <span class="swatch-label">Nested Card</span>
+          <span class="swatch-value">bg-[#18181b]/80</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: rgba(17,17,19,0.8)"></div>
+        <div class="swatch-info">
+          <span class="swatch-label">Nav / Glass</span>
+          <span class="swatch-value">bg-[#111113]/80<br>backdrop-blur-xl</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: rgba(255,255,255,0.05)"></div>
+        <div class="swatch-info">
+          <span class="swatch-label">Surface Subtle</span>
+          <span class="swatch-value">bg-white/5</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: rgba(255,255,255,0.1)"></div>
+        <div class="swatch-info">
+          <span class="swatch-label">Surface Mid</span>
+          <span class="swatch-value">bg-white/10</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Text Colors -->
+    <h3 class="text-xl font-semibold text-white mb-6 tracking-tight">Text Colors</h3>
+    <div class="bg-[#111113]/60 border border-white/5 rounded-[2rem] overflow-hidden mb-12">
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Primary</span><span class="type-spec">text-white / text-slate-50</span></div>
+        <div class="type-preview"><span class="text-white text-xl font-semibold">Scale Your Expertise</span></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Secondary</span><span class="type-spec">text-slate-300</span></div>
+        <div class="type-preview"><span class="text-slate-300 text-xl">Turn audience trust into revenue</span></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Tertiary</span><span class="type-spec">text-slate-400</span></div>
+        <div class="type-preview"><span class="text-slate-400 text-xl">Without upfront fees or burnout</span></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Muted</span><span class="type-spec">text-slate-500</span></div>
+        <div class="type-preview"><span class="text-slate-500 text-xl">30k–150k Engaged</span></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Accent — Blue</span><span class="type-spec">text-blue-400 / text-[#3ba6f7]</span></div>
+        <div class="type-preview"><span class="text-blue-400 text-xl font-semibold">30%</span><span class="text-[#3ba6f7] text-xl font-semibold ml-6">Wangflow Share</span></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Accent — Emerald</span><span class="type-spec">text-emerald-400</span></div>
+        <div class="type-preview"><span class="text-emerald-400 text-xl font-semibold">+13.1%</span></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Gradient Text (H1)</span><span class="type-spec">bg-gradient-to-b<br>from-white via-white to-slate-400<br>bg-clip-text text-transparent</span></div>
+        <div class="type-preview">
+          <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-slate-400 text-3xl font-semibold tracking-tight leading-[1.1]">Predictable Revenue</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Borders -->
+    <h3 class="text-xl font-semibold text-white mb-6 tracking-tight">Borders &amp; Dividers</h3>
+    <div class="swatch-grid mb-12">
+      <div class="swatch">
+        <div class="swatch-color border-4" style="background:transparent; border-color: rgba(255,255,255,0.05)"></div>
+        <div class="swatch-info"><span class="swatch-label">Subtle</span><span class="swatch-value">border-white/5</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color border-4" style="background:transparent; border-color: rgba(255,255,255,0.1)"></div>
+        <div class="swatch-info"><span class="swatch-label">Default</span><span class="swatch-value">border-white/10</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color border-4" style="background:transparent; border-color: rgba(255,255,255,0.15)"></div>
+        <div class="swatch-info"><span class="swatch-label">Medium</span><span class="swatch-value">border-white/15</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color border-4" style="background:transparent; border-color: rgba(255,255,255,0.2)"></div>
+        <div class="swatch-info"><span class="swatch-label">Strong</span><span class="swatch-value">border-white/20</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color border-2" style="background:transparent; border-color: rgba(16,185,129,0.2)"></div>
+        <div class="swatch-info"><span class="swatch-label">Emerald</span><span class="swatch-value">border-emerald-500/20</span></div>
+      </div>
+    </div>
+
+    <!-- Gradients & Glows -->
+    <h3 class="text-xl font-semibold text-white mb-6 tracking-tight">Gradients &amp; Ambient Glows</h3>
+    <div class="swatch-grid mb-4">
+      <div class="swatch">
+        <div class="swatch-color" style="background: linear-gradient(to bottom, rgba(59,130,246,0.1), transparent)"></div>
+        <div class="swatch-info"><span class="swatch-label">Blue Ambient Top</span><span class="swatch-value">bg-blue-500/10 blur-[120px]<br>top-[-10%] left-[-10%]</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: linear-gradient(to top, rgba(56,189,248,0.05), transparent)"></div>
+        <div class="swatch-info"><span class="swatch-label">Sky Ambient Bottom</span><span class="swatch-value">bg-sky-400/5 blur-[150px]<br>bottom right</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: radial-gradient(circle, rgba(59,130,246,0.05), transparent 70%)"></div>
+        <div class="swatch-info"><span class="swatch-label">Section Glow</span><span class="swatch-value">bg-blue-500/5 blur-[120px]<br>section center</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: linear-gradient(to bottom, white, #cbd5e1)"></div>
+        <div class="swatch-info"><span class="swatch-label">Progress Bar — White</span><span class="swatch-value">bg-white → 70% share</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: linear-gradient(135deg, #3b82f6, #6366f1)"></div>
+        <div class="swatch-info"><span class="swatch-label">Progress Bar — Blue</span><span class="swatch-value">bg-blue-500 → 30% share</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: linear-gradient(135deg, #f09433, #e6683c, #bc1888)"></div>
+        <div class="swatch-info"><span class="swatch-label">Instagram Gradient</span><span class="swatch-value">from-[#f09433] via-[#e6683c]<br>to-[#bc1888]</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #0077b5"></div>
+        <div class="swatch-info"><span class="swatch-label">LinkedIn Blue</span><span class="swatch-value">bg-[#0077b5]</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #ff0000"></div>
+        <div class="swatch-info"><span class="swatch-label">YouTube Red</span><span class="swatch-value">bg-[#ff0000]</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 3 — UI COMPONENTS
+     ============================================================ -->
+<section class="z-10 pt-16 pb-24 px-4 relative" id="components">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-16">
+      <span class="ds-section-label">03 — UI Components</span>
+      <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-6">Components</h2>
+      <p class="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">Buttons, cards, badges, and chips used on the production site. Hover to see interactive states.</p>
+    </div>
+
+    <!-- BUTTONS -->
+    <h3 class="text-xl font-semibold text-white mb-8 tracking-tight">Buttons</h3>
+    <div class="bg-[#111113]/60 border border-white/5 rounded-[2rem] p-8 md:p-10 mb-6">
+      <div class="flex flex-wrap items-center gap-6">
+
+        <!-- Primary White (Nav) -->
+        <div class="flex flex-col items-start gap-3">
+          <span class="type-name">Primary — Nav Size</span>
+          <a class="hover:bg-slate-200 transition-colors text-base font-semibold text-[#0a0a0c] bg-white rounded-full pt-2.5 pr-6 pb-2.5 pl-6" href="#">DM US</a>
+        </div>
+
+        <!-- Primary White (Hero) -->
+        <div class="flex flex-col items-start gap-3">
+          <span class="type-name">Primary — Hero Size</span>
+          <a class="hover:bg-slate-200 transition-all flex items-center justify-center gap-2 text-lg font-semibold text-[#0a0a0c] bg-white rounded-full pt-4 pr-10 pb-4 pl-10" href="#">DM @wangflow_</a>
+        </div>
+
+        <!-- Primary White (CTA Glow) -->
+        <div class="flex flex-col items-start gap-3">
+          <span class="type-name">Primary — CTA + Glow</span>
+          <a class="inline-flex items-center justify-center gap-2 hover:bg-slate-200 transition-all hover:shadow-[0_0_60px_-10px_rgba(255,255,255,0.4)] text-lg font-semibold text-[#0a0a0c] bg-white rounded-full pt-4 pr-10 pb-4 pl-10 shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)]" href="#">DM @wangflow_</a>
+        </div>
+
+        <!-- Secondary Outline -->
+        <div class="flex flex-col items-start gap-3">
+          <span class="type-name">Secondary — Outline</span>
+          <a class="px-10 py-4 rounded-full bg-transparent border border-white/15 text-white font-semibold text-lg hover:bg-white/5 transition-all flex items-center justify-center" href="#">Explore Gameplan</a>
+        </div>
+
+        <!-- Nav Pill Link -->
+        <div class="flex flex-col items-start gap-3">
+          <span class="type-name">Nav Pill Link</span>
+          <a class="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors border border-white/10 px-4 py-2 rounded-full bg-white/5" href="#">
+            Client Access <i class="w-4 h-4" data-lucide="arrow-up-right" stroke-width="1.5"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BADGES -->
+    <h3 class="text-xl font-semibold text-white mb-8 tracking-tight mt-12">Badges &amp; Tags</h3>
+    <div class="bg-[#111113]/60 border border-white/5 rounded-[2rem] p-8 md:p-10 mb-6">
+      <div class="flex flex-wrap items-center gap-6">
+
+        <!-- Hero Badge -->
+        <div class="flex flex-col items-start gap-3">
+          <span class="type-name">Hero Badge</span>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-[#111113]/80 text-slate-300 text-base font-medium backdrop-blur-md transition-colors hover:border-white/20 cursor-default">
+            <i class="w-4 h-4 text-blue-400" data-lucide="circle-dashed" stroke-width="1.5"></i>
+            <span>Unlock Your Revenue Potential <i class="inline w-4 h-4 ml-1 opacity-70" data-lucide="arrow-right" stroke-width="1.5"></i></span>
+          </div>
+        </div>
+
+        <!-- Section Badge -->
+        <div class="flex flex-col items-start gap-3">
+          <span class="type-name">Section Badge</span>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-slate-300 text-base font-medium backdrop-blur-md transition-colors hover:border-white/20">
+            <iconify-icon class="text-yellow-400" height="18" icon="solar:star-linear" stroke-width="1.5" width="18"></iconify-icon>
+            <span>Creator Success Stories</span>
+          </div>
+        </div>
+
+        <!-- Zero Risk Badge (with icon) -->
+        <div class="flex flex-col items-start gap-3">
+          <span class="type-name">Inline Badge — Icon</span>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-slate-300 text-base font-medium">
+            <i class="w-5 h-5 text-emerald-400" data-lucide="shield-check" stroke-width="1.5"></i>
+            <span>Zero Risk Partnership</span>
+          </div>
+        </div>
+
+        <!-- Stat Badge Green -->
+        <div class="flex flex-col items-start gap-3">
+          <span class="type-name">Stat Chip — Emerald</span>
+          <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded flex items-center gap-1">13.1% <i class="w-3 h-3" data-lucide="arrow-up-right" stroke-width="1.5"></i></span>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="flex flex-col items-start gap-3">
+          <span class="type-name">Scroll Indicator</span>
+          <div class="flex items-center gap-3 bg-[#111113]/80 backdrop-blur-md pl-3 pr-5 py-2.5 rounded-full border border-white/10">
+            <div class="w-8 h-8 rounded-full bg-white text-[#0a0a0c] flex items-center justify-center">
+              <i class="w-4 h-4" data-lucide="arrow-down" stroke-width="1.5"></i>
+            </div>
+            <span class="text-base font-semibold text-slate-400 tracking-tight">Scroll down</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CARDS -->
+    <h3 class="text-xl font-semibold text-white mb-8 tracking-tight mt-12">Cards</h3>
+    <div class="grid md:grid-cols-3 gap-6 mb-6">
+
+      <!-- Feature Card -->
+      <div class="group hover:bg-[#151518] transition-all duration-300 overflow-hidden bg-[#111113]/50 border-white/5 border rounded-[2rem] px-8 py-10 relative">
+        <div class="group-hover:opacity-100 transition-opacity opacity-20 pt-6 pr-6 pb-6 pl-6 absolute top-0 right-0">
+          <i class="w-24 h-24 text-blue-500 blur-2xl" data-lucide="layers" stroke-width="1.5"></i>
+        </div>
+        <div class="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-8 relative z-10 group-hover:scale-110 transition-transform">
+          <i class="w-6 h-6 text-slate-300" data-lucide="radar" stroke-width="1.5"></i>
+        </div>
+        <h3 class="text-3xl font-semibold text-white mb-4 tracking-tight relative z-10">Feature Card</h3>
+        <p class="text-lg text-slate-400 leading-relaxed relative z-10">Hover to see the glow reveal and icon scale-up. Used in the Gameplan section.</p>
+        <div class="mt-2 text-xs text-slate-600 font-mono">rounded-[2rem] · bg-[#111113]/50 · border-white/5</div>
+      </div>
+
+      <!-- Stat Card -->
+      <div class="flex flex-col gap-4">
+        <div class="bg-[#18181b]/80 border border-white/5 rounded-2xl p-5 flex flex-col gap-3 hover:bg-[#1c1c21] transition-colors duration-500">
+          <div class="flex items-center gap-2 text-slate-400">
+            <i class="w-4 h-4" data-lucide="activity" stroke-width="1.5"></i>
+            <span class="text-sm font-semibold">Conversion Rate</span>
+            <i class="w-4 h-4 ml-auto" data-lucide="more-horizontal" stroke-width="1.5"></i>
+          </div>
+          <div class="flex items-baseline gap-3">
+            <span class="text-3xl font-semibold text-white tracking-tight">68.5%</span>
+            <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded flex items-center gap-1">30.9% <i class="w-3 h-3" data-lucide="arrow-up-right" stroke-width="1.5"></i></span>
+          </div>
+        </div>
+        <div class="bg-[#18181b]/80 border border-white/5 rounded-2xl p-5 flex flex-col gap-3 hover:bg-[#1c1c21] transition-colors duration-500">
+          <div class="flex items-center gap-2 text-slate-400">
+            <i class="w-4 h-4" data-lucide="users" stroke-width="1.5"></i>
+            <span class="text-sm font-semibold">Customers</span>
+            <i class="w-4 h-4 ml-auto" data-lucide="more-horizontal" stroke-width="1.5"></i>
+          </div>
+          <div class="flex items-baseline gap-3">
+            <span class="text-3xl font-semibold text-white tracking-tight">1.5 Million</span>
+            <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded flex items-center gap-1">25.6% <i class="w-3 h-3" data-lucide="arrow-up-right" stroke-width="1.5"></i></span>
+          </div>
+        </div>
+        <div class="text-xs text-slate-600 font-mono px-1">rounded-2xl · bg-[#18181b]/80 · border-white/5</div>
+      </div>
+
+      <!-- Testimonial Card -->
+      <div class="flex flex-col gap-4">
+        <div class="bg-[#111113]/50 border border-white/5 rounded-3xl p-8 backdrop-blur-sm transition-all hover:bg-[#151518] hover:border-white/10 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-semibold text-lg border border-white/10 shadow-inner">A</div>
+              <div>
+                <h4 class="text-lg font-semibold text-white tracking-tight">Alex River</h4>
+                <p class="text-base text-slate-400">@alexcreates</p>
+              </div>
+            </div>
+            <p class="text-lg text-slate-300 leading-relaxed mb-6">"Did <span class="text-white font-medium">$45k in the first month</span>. Absolutely unreal support."</p>
+          </div>
+          <div class="flex gap-1 text-yellow-400/90">
+            <iconify-icon height="20" icon="solar:star-bold" width="20"></iconify-icon>
+            <iconify-icon height="20" icon="solar:star-bold" width="20"></iconify-icon>
+            <iconify-icon height="20" icon="solar:star-bold" width="20"></iconify-icon>
+            <iconify-icon height="20" icon="solar:star-bold" width="20"></iconify-icon>
+            <iconify-icon height="20" icon="solar:star-bold" width="20"></iconify-icon>
+          </div>
+        </div>
+        <div class="text-xs text-slate-600 font-mono px-1">rounded-3xl · backdrop-blur-sm · border-white/5</div>
+      </div>
+    </div>
+
+    <!-- Graph Nodes (Decorative) -->
+    <h3 class="text-xl font-semibold text-white mb-8 tracking-tight mt-12">Node / Graph Pill</h3>
+    <div class="bg-[#111113]/60 border border-white/5 rounded-[2rem] p-8 md:p-10 mb-6">
+      <div class="flex flex-wrap gap-8 items-center">
+        <!-- Node Pill -->
+        <div class="flex flex-col items-start gap-3">
+          <span class="type-name">Graph Node</span>
+          <div class="flex items-center gap-3">
+            <div class="relative">
+              <div class="w-10 h-10 rounded-full border border-white/15 bg-[#111113] flex items-center justify-center relative z-10">
+                <i class="w-5 h-5 text-slate-300" data-lucide="users" stroke-width="1.5"></i>
+              </div>
+              <div class="absolute left-full top-1/2 w-[80px] h-[1px] bg-gradient-to-r from-white/20 to-transparent -translate-y-1/2 origin-left"></div>
+            </div>
+            <div class="text-left">
+              <p class="text-base font-semibold text-slate-300">Audience Trust</p>
+              <p class="text-xs text-slate-500">30k–150k Engaged</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Client Pill -->
+        <div class="flex flex-col items-start gap-3">
+          <span class="type-name">Client Pill</span>
+          <div class="bg-white/5 border border-white/10 rounded-full py-1.5 px-3 flex items-center gap-2 shadow-xl backdrop-blur-md hover:-translate-y-1 transition-transform duration-500">
+            <div class="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center shrink-0">
+              <i class="w-3.5 h-3.5 text-slate-800" data-lucide="user" stroke-width="2"></i>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-xs font-semibold text-white tracking-tight leading-none">$1.7M/YR</span>
+              <span class="text-[10px] text-slate-400 leading-none mt-0.5 uppercase">Client #193</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="flex flex-col items-start gap-3 min-w-[240px]">
+          <span class="type-name">Progress Bar</span>
+          <div class="w-full">
+            <div class="flex justify-between items-end mb-3">
+              <span class="text-base font-medium text-slate-400">Your Share</span>
+              <span class="text-5xl font-semibold text-white tracking-tight">70%</span>
+            </div>
+            <div class="w-full h-3 bg-white/10 rounded-full overflow-hidden">
+              <div class="w-[70%] h-full bg-white rounded-full"></div>
+            </div>
+          </div>
+          <div class="w-full">
+            <div class="flex justify-between items-end mb-3">
+              <span class="text-base font-medium text-slate-400">Wangflow Share</span>
+              <span class="text-5xl font-semibold text-[#3ba6f7] tracking-tight">30%</span>
+            </div>
+            <div class="w-full h-3 bg-white/10 rounded-full overflow-hidden">
+              <div class="w-[30%] h-full bg-blue-500 rounded-full"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checklist Item -->
+        <div class="flex flex-col items-start gap-3">
+          <span class="type-name">Checklist Item</span>
+          <div class="space-y-4">
+            <div class="flex items-start gap-4">
+              <div class="mt-1 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 shrink-0">
+                <i class="w-4 h-4 text-white" data-lucide="check" stroke-width="2"></i>
+              </div>
+              <p class="text-lg text-slate-300">Zero upfront fees or monthly retainers.</p>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="mt-1 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 shrink-0">
+                <i class="w-4 h-4 text-white" data-lucide="check" stroke-width="2"></i>
+              </div>
+              <p class="text-lg text-slate-300">Automatic payouts distributed instantly.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 4 — LAYOUT & SPACING
+     ============================================================ -->
+<section class="z-10 pt-16 pb-24 px-4 relative" id="layout">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-16">
+      <span class="ds-section-label">04 — Layout &amp; Spacing</span>
+      <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-6">Grid &amp; Spacing</h2>
+      <p class="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">Three canonical layouts from the production site. Max-widths, grid gaps, and section padding shown at full scale.</p>
+    </div>
+
+    <!-- Pattern 1: Stats Row (4 columns) -->
+    <div class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="ds-section-label" style="margin-bottom:0">Pattern A</div>
+        <p class="text-sm text-slate-500 font-mono">grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 · gap-8 md:gap-12 · text-center · max-w-6xl</p>
+      </div>
+      <section class="border-y border-white/5 pt-16 pb-16 relative">
+        <div class="max-w-6xl mx-auto">
+          <p class="uppercase text-base font-semibold text-slate-500 tracking-[0.2em] text-center mb-12">Our collective impact to date</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center">
+            <div class="flex flex-col gap-2">
+              <span class="md:text-6xl text-5xl font-semibold text-white tracking-tight">$55M+</span>
+              <span class="text-lg text-slate-400">Total Revenue Generated</span>
+            </div>
+            <div class="flex flex-col gap-2">
+              <span class="text-5xl md:text-6xl font-semibold tracking-tight text-white">$2.3M</span>
+              <span class="text-lg text-slate-400">Generated Last 7 Days</span>
+            </div>
+            <div class="flex flex-col gap-2">
+              <span class="md:text-6xl text-5xl font-semibold text-blue-400 tracking-tight">3</span>
+              <span class="text-lg text-slate-400">Ready-to-Launch Products</span>
+            </div>
+            <div class="flex flex-col gap-2">
+              <span class="text-5xl md:text-6xl font-semibold tracking-tight text-white">14</span>
+              <span class="text-lg text-slate-400">Days to Full Launch</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Pattern 2: Feature Grid (3 columns) -->
+    <div class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="ds-section-label" style="margin-bottom:0">Pattern B</div>
+        <p class="text-sm text-slate-500 font-mono">grid md:grid-cols-3 · gap-6 · max-w-6xl · rounded-[2rem]</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="group hover:bg-[#151518] transition-all duration-300 overflow-hidden bg-[#111113]/50 border-white/5 border rounded-[2rem] px-8 py-10 relative">
+          <div class="group-hover:opacity-100 transition-opacity opacity-20 pt-6 pr-6 pb-6 pl-6 absolute top-0 right-0">
+            <i class="w-24 h-24 text-blue-500 blur-2xl" data-lucide="pie-chart" stroke-width="1.5"></i>
+          </div>
+          <div class="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-8 relative z-10 group-hover:scale-110 transition-transform">
+            <i class="w-6 h-6 text-slate-300" data-lucide="radar" stroke-width="1.5"></i>
+          </div>
+          <h3 class="text-3xl font-semibold text-white mb-4 tracking-tight relative z-10">Demand Analysis</h3>
+          <p class="text-lg text-slate-400 leading-relaxed relative z-10">We analyze your audience to uncover exactly what they need.</p>
+        </div>
+        <div class="group hover:bg-[#151518] transition-all duration-300 overflow-hidden bg-[#111113]/50 border-white/5 border rounded-[2rem] px-8 py-10 relative">
+          <div class="group-hover:opacity-100 transition-opacity opacity-20 pt-6 pr-6 pb-6 pl-6 absolute top-0 right-0">
+            <i class="w-24 h-24 text-blue-500 blur-2xl" data-lucide="layers" stroke-width="1.5"></i>
+          </div>
+          <div class="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-8 relative z-10 group-hover:scale-110 transition-transform">
+            <i class="w-6 h-6 text-slate-300" data-lucide="package" stroke-width="1.5"></i>
+          </div>
+          <h3 class="text-3xl font-semibold text-white mb-4 tracking-tight relative z-10">Product Suite</h3>
+          <p class="text-lg text-slate-400 leading-relaxed relative z-10">3 ready-to-launch, high-margin digital products built around your expertise.</p>
+        </div>
+        <div class="group hover:bg-[#151518] transition-all duration-300 overflow-hidden bg-[#111113]/50 border-white/5 border rounded-[2rem] px-8 py-10 relative">
+          <div class="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-100 transition-opacity">
+            <i class="w-24 h-24 text-blue-500 blur-2xl" data-lucide="zap" stroke-width="1.5"></i>
+          </div>
+          <div class="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-8 relative z-10 group-hover:scale-110 transition-transform">
+            <i class="w-6 h-6 text-slate-300" data-lucide="rocket" stroke-width="1.5"></i>
+          </div>
+          <h3 class="text-3xl font-semibold text-white mb-4 tracking-tight relative z-10">14-Day Playbook</h3>
+          <p class="text-lg text-slate-400 leading-relaxed relative z-10">A complete launch system. You launch fast, we execute.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pattern 3: Split Layout (flex lg:flex-row) -->
+    <div class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="ds-section-label" style="margin-bottom:0">Pattern C</div>
+        <p class="text-sm text-slate-500 font-mono">flex flex-col lg:flex-row · gap-16 · rounded-[2.5rem] · p-10 md:p-16</p>
+      </div>
+      <div class="md:p-16 flex flex-col lg:flex-row gap-16 overflow-hidden bg-[#111113]/50 max-w-6xl border-white/10 border rounded-[2.5rem] mr-auto ml-auto pt-10 pr-10 pb-10 pl-10 relative gap-x-16 gap-y-16 items-center">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent pointer-events-none"></div>
+        <div class="flex-1 relative z-10">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-slate-300 text-base font-medium mb-8">
+            <i class="w-5 h-5 text-emerald-400" data-lucide="shield-check" stroke-width="1.5"></i>
+            <span>Zero Risk Partnership</span>
+          </div>
+          <h2 class="text-4xl md:text-6xl font-semibold tracking-tight text-white mb-6 leading-tight">We only win <br/>when you do.</h2>
+          <p class="text-lg md:text-xl text-slate-400 mb-10 max-w-lg leading-relaxed">
+            We work on a pure <span class="text-white font-medium">30% lifetime revenue-share model</span> — no retainers, no hidden costs.
+          </p>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="mt-1 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 shrink-0">
+                <i class="w-4 h-4 text-white" data-lucide="check" stroke-width="2"></i>
+              </div>
+              <p class="text-lg text-slate-300">Zero upfront fees or monthly retainers.</p>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="mt-1 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 shrink-0">
+                <i class="w-4 h-4 text-white" data-lucide="check" stroke-width="2"></i>
+              </div>
+              <p class="text-lg text-slate-300">Automatic payouts distributed instantly.</p>
+            </div>
+          </div>
+        </div>
+        <div class="w-full lg:w-[460px] bg-[#0a0a0c] rounded-3xl border border-white/10 p-10 relative z-10 shadow-2xl">
+          <div class="mb-10">
+            <div class="flex justify-between items-end mb-3">
+              <span class="text-base font-medium text-slate-400">Your Share</span>
+              <span class="text-5xl font-semibold text-white tracking-tight">70%</span>
+            </div>
+            <div class="w-full h-3 bg-white/10 rounded-full overflow-hidden">
+              <div class="w-[70%] h-full bg-white rounded-full"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between items-end mb-3">
+              <span class="text-base font-medium text-slate-400">Wangflow Share</span>
+              <span class="text-5xl font-semibold text-[#3ba6f7] tracking-tight">30%</span>
+            </div>
+            <div class="w-full h-3 bg-white/10 rounded-full overflow-hidden">
+              <div class="w-[30%] h-full bg-blue-500 rounded-full"></div>
+            </div>
+          </div>
+          <div class="mt-12 pt-6 border-t border-white/10 flex items-center justify-between text-base text-slate-500">
+            <span class="flex items-center gap-2"><i class="w-5 h-5" data-lucide="refresh-cw" stroke-width="1.5"></i> Lifetime Model</span>
+            <span class="flex items-center gap-2"><i class="w-5 h-5" data-lucide="lock" stroke-width="1.5"></i> Secure Payouts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spacing Reference -->
+    <h3 class="text-xl font-semibold text-white mb-6 tracking-tight mt-12">Section Spacing</h3>
+    <div class="bg-[#111113]/60 border border-white/5 rounded-[2rem] overflow-hidden">
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Section Padding — Standard</span><span class="type-spec">pt-16 pb-16 px-4</span></div>
+        <div class="type-preview"><span class="text-slate-400 text-base">Stats, Testimonials → 64px top/bottom, 16px sides</span></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Section Padding — Large</span><span class="type-spec">pt-32 pb-24 px-4</span></div>
+        <div class="type-preview"><span class="text-slate-400 text-base">Numbers, Typography → 128px top, 96px bottom</span></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Section Padding — XL</span><span class="type-spec">pt-32 pb-32 px-4</span></div>
+        <div class="type-preview"><span class="text-slate-400 text-base">Final CTA → 128px top/bottom</span></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Max Container</span><span class="type-spec">max-w-6xl mx-auto</span></div>
+        <div class="type-preview"><span class="text-slate-400 text-base">Most sections → 72rem (1152px) centered</span></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Narrow Container</span><span class="type-spec">max-w-5xl / max-w-3xl / max-w-2xl</span></div>
+        <div class="type-preview"><span class="text-slate-400 text-base">Nav, CTA, prose blocks — progressively narrower</span></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Card Radius — Large</span><span class="type-spec">rounded-[2rem] / rounded-[2.5rem]</span></div>
+        <div class="type-preview"><span class="text-slate-400 text-base">Feature cards, Partnership wrapper</span></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Card Radius — Medium</span><span class="type-spec">rounded-3xl / rounded-2xl</span></div>
+        <div class="type-preview"><span class="text-slate-400 text-base">Testimonial cards, Stat blocks, Revenue chart card</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 5 — MOTION & INTERACTION
+     ============================================================ -->
+<section class="z-10 pt-16 pb-24 px-4 relative" id="motion">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-16">
+      <span class="ds-section-label">05 — Motion &amp; Interaction</span>
+      <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-6">Motion Gallery</h2>
+      <p class="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">Every transition, hover lift, and keyframe animation used in production. Hover each demo to trigger.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+
+      <!-- Card Hover Lift -->
+      <div class="bg-[#111113]/50 border border-white/5 rounded-[2rem] p-6 flex flex-col gap-4">
+        <p class="motion-label">Card Hover — Color + Border</p>
+        <div class="group hover:bg-[#151518] hover:border-white/10 transition-colors duration-500 bg-[#111113]/60 border border-white/5 rounded-2xl p-6 cursor-default">
+          <p class="text-slate-300 text-base">Hover over this card to see the dark background deepen and the border brighten.</p>
+        </div>
+        <code class="text-xs text-slate-600 font-mono">hover:bg-[#151518] hover:border-white/10<br>transition-colors duration-500</code>
+      </div>
+
+      <!-- Feature Card Icon Scale -->
+      <div class="bg-[#111113]/50 border border-white/5 rounded-[2rem] p-6 flex flex-col gap-4">
+        <p class="motion-label">Feature Card — Icon Scale + Glow Reveal</p>
+        <div class="group hover:bg-[#151518] transition-all duration-300 overflow-hidden bg-[#111113]/60 border border-white/5 rounded-2xl p-6 cursor-default relative">
+          <div class="group-hover:opacity-100 transition-opacity opacity-20 absolute top-0 right-0 p-4">
+            <i class="w-16 h-16 text-blue-500 blur-2xl" data-lucide="zap" stroke-width="1.5"></i>
+          </div>
+          <div class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i class="w-5 h-5 text-slate-300" data-lucide="zap" stroke-width="1.5"></i>
+          </div>
+          <p class="text-slate-300 text-base relative z-10">Hover: icon scales up, blurred glow transitions from 20% → 100%.</p>
+        </div>
+        <code class="text-xs text-slate-600 font-mono">group-hover:scale-110 transition-transform<br>group-hover:opacity-100 opacity-20</code>
+      </div>
+
+      <!-- Nav Link Transition -->
+      <div class="bg-[#111113]/50 border border-white/5 rounded-[2rem] p-6 flex flex-col gap-4">
+        <p class="motion-label">Nav Links — Color Transition</p>
+        <div class="flex flex-col gap-3 py-2">
+          <a class="hover:text-white transition-colors text-slate-400 text-base font-medium" href="#">Gameplan</a>
+          <a class="hover:text-white transition-colors text-slate-400 text-base font-medium" href="#">Results</a>
+          <a class="hover:text-white transition-colors text-slate-400 text-base font-medium" href="#">Model</a>
+        </div>
+        <code class="text-xs text-slate-600 font-mono">hover:text-white transition-colors<br>text-slate-400 → text-white</code>
+      </div>
+
+      <!-- Button Hover -->
+      <div class="bg-[#111113]/50 border border-white/5 rounded-[2rem] p-6 flex flex-col gap-4">
+        <p class="motion-label">Primary Button — Darken on Hover</p>
+        <div class="py-2">
+          <a class="hover:bg-slate-200 transition-colors text-base font-semibold text-[#0a0a0c] bg-white rounded-full pt-2.5 pr-6 pb-2.5 pl-6 inline-block" href="#">DM US</a>
+        </div>
+        <code class="text-xs text-slate-600 font-mono">hover:bg-slate-200 transition-colors<br>bg-white → bg-slate-200</code>
+      </div>
+
+      <!-- CTA Button Glow -->
+      <div class="bg-[#111113]/50 border border-white/5 rounded-[2rem] p-6 flex flex-col gap-4">
+        <p class="motion-label">CTA Button — Shadow Glow Lift</p>
+        <div class="py-2">
+          <a class="inline-flex items-center gap-2 hover:bg-slate-200 transition-all hover:shadow-[0_0_60px_-10px_rgba(255,255,255,0.4)] text-base font-semibold text-[#0a0a0c] bg-white rounded-full pt-2.5 pr-6 pb-2.5 pl-6 shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)]" href="#">DM @wangflow_</a>
+        </div>
+        <code class="text-xs text-slate-600 font-mono">shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)]<br>hover:shadow-[0_0_60px_-10px_rgba(255,255,255,0.4)]</code>
+      </div>
+
+      <!-- Badge Hover -->
+      <div class="bg-[#111113]/50 border border-white/5 rounded-[2rem] p-6 flex flex-col gap-4">
+        <p class="motion-label">Badge — Border Hover</p>
+        <div class="py-2">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-[#111113]/80 text-slate-300 text-base font-medium backdrop-blur-md transition-colors hover:border-white/20 cursor-default">
+            <i class="w-4 h-4 text-blue-400" data-lucide="circle-dashed" stroke-width="1.5"></i>
+            <span>Hover to reveal border</span>
+          </div>
+        </div>
+        <code class="text-xs text-slate-600 font-mono">hover:border-white/20 transition-colors<br>border-white/10 → border-white/20</code>
+      </div>
+
+      <!-- Client Pill Float -->
+      <div class="bg-[#111113]/50 border border-white/5 rounded-[2rem] p-6 flex flex-col gap-4">
+        <p class="motion-label">Client Pill — Float / Lift</p>
+        <div class="py-2 flex gap-3">
+          <div class="bg-white/5 border border-white/10 rounded-full py-1.5 px-3 flex items-center gap-2 shadow-xl backdrop-blur-md hover:-translate-y-1 transition-transform duration-500">
+            <div class="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center shrink-0"><i class="w-3.5 h-3.5 text-slate-800" data-lucide="user" stroke-width="2"></i></div>
+            <div class="flex flex-col">
+              <span class="text-xs font-semibold text-white leading-none">$1.7M/YR</span>
+              <span class="text-[10px] text-slate-400 leading-none mt-0.5 uppercase">Client #193</span>
+            </div>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-full py-1.5 px-3 flex items-center gap-2 shadow-xl backdrop-blur-md hover:-translate-y-2 transition-transform duration-700 delay-75">
+            <div class="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center shrink-0"><i class="w-3.5 h-3.5 text-slate-800" data-lucide="user" stroke-width="2"></i></div>
+            <div class="flex flex-col">
+              <span class="text-xs font-semibold text-white leading-none">$3.2M/YR</span>
+              <span class="text-[10px] text-slate-400 leading-none mt-0.5 uppercase">Client #175</span>
+            </div>
+          </div>
+        </div>
+        <code class="text-xs text-slate-600 font-mono">hover:-translate-y-1/2 transition-transform<br>duration-500 · duration-700 delay-75</code>
+      </div>
+
+      <!-- SOPs Docs Fan -->
+      <div class="bg-[#111113]/50 border border-white/5 rounded-[2rem] p-6 flex flex-col gap-4">
+        <p class="motion-label">Document Fan — Rotate &amp; Translate</p>
+        <div class="relative h-28 flex items-center justify-center group cursor-default">
+          <div class="absolute w-16 h-20 bg-gradient-to-br from-[#ffe5b4] to-[#ffb347] rounded-xl transform -rotate-[15deg] -translate-x-8 -translate-y-2 z-10 group-hover:-rotate-[20deg] group-hover:-translate-x-12 group-hover:-translate-y-4 transition-all duration-500 ease-out"></div>
+          <div class="absolute w-16 h-20 bg-gradient-to-br from-[#fff0cc] to-[#ffbf00] rounded-xl transform -rotate-6 z-20 group-hover:-rotate-12 transition-all duration-500 ease-out"></div>
+          <div class="absolute w-16 h-20 bg-gradient-to-br from-[#ffffff] to-[#ffcc33] rounded-xl transform rotate-6 translate-x-6 z-30 group-hover:rotate-12 group-hover:translate-x-10 transition-all duration-500 ease-out"></div>
+        </div>
+        <code class="text-xs text-slate-600 font-mono">group-hover:-rotate-[20deg] group-hover:-translate-x-12<br>transition-all duration-500 ease-out · staggered z-index</code>
+      </div>
+
+      <!-- Marquee Scroll -->
+      <div class="bg-[#111113]/50 border border-white/5 rounded-[2rem] p-6 flex flex-col gap-4">
+        <p class="motion-label">Marquee — Infinite Scroll (pause on hover)</p>
+        <div class="relative w-full overflow-hidden mask-horizontal-faded">
+          <div class="flex animate-marquee gap-4 w-max">
+            <div class="flex gap-4">
+              <div class="bg-[#111113]/50 border border-white/5 rounded-2xl px-5 py-3 shrink-0"><span class="text-slate-300 text-sm font-medium whitespace-nowrap">Creator Success Stories</span></div>
+              <div class="bg-[#111113]/50 border border-white/5 rounded-2xl px-5 py-3 shrink-0"><span class="text-slate-300 text-sm font-medium whitespace-nowrap">$45k in Month 1</span></div>
+              <div class="bg-[#111113]/50 border border-white/5 rounded-2xl px-5 py-3 shrink-0"><span class="text-slate-300 text-sm font-medium whitespace-nowrap">Autopilot Revenue</span></div>
+              <div class="bg-[#111113]/50 border border-white/5 rounded-2xl px-5 py-3 shrink-0"><span class="text-slate-300 text-sm font-medium whitespace-nowrap">8M+ Followers</span></div>
+              <div class="bg-[#111113]/50 border border-white/5 rounded-2xl px-5 py-3 shrink-0"><span class="text-slate-300 text-sm font-medium whitespace-nowrap">Zero Risk Model</span></div>
+            </div>
+            <div class="flex gap-4" aria-hidden="true">
+              <div class="bg-[#111113]/50 border border-white/5 rounded-2xl px-5 py-3 shrink-0"><span class="text-slate-300 text-sm font-medium whitespace-nowrap">Creator Success Stories</span></div>
+              <div class="bg-[#111113]/50 border border-white/5 rounded-2xl px-5 py-3 shrink-0"><span class="text-slate-300 text-sm font-medium whitespace-nowrap">$45k in Month 1</span></div>
+              <div class="bg-[#111113]/50 border border-white/5 rounded-2xl px-5 py-3 shrink-0"><span class="text-slate-300 text-sm font-medium whitespace-nowrap">Autopilot Revenue</span></div>
+              <div class="bg-[#111113]/50 border border-white/5 rounded-2xl px-5 py-3 shrink-0"><span class="text-slate-300 text-sm font-medium whitespace-nowrap">8M+ Followers</span></div>
+              <div class="bg-[#111113]/50 border border-white/5 rounded-2xl px-5 py-3 shrink-0"><span class="text-slate-300 text-sm font-medium whitespace-nowrap">Zero Risk Model</span></div>
+            </div>
+          </div>
+        </div>
+        <code class="text-xs text-slate-600 font-mono">animation: marquee 40s linear infinite<br>animation-play-state: paused on hover<br>mask-image: faded horizontal edges</code>
+      </div>
+
+    </div>
+
+    <!-- Transition Reference Table -->
+    <h3 class="text-xl font-semibold text-white mb-6 tracking-tight">Transition Reference</h3>
+    <div class="bg-[#111113]/60 border border-white/5 rounded-[2rem] overflow-hidden">
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Nav Link Color</span><span class="type-spec">transition-colors</span></div>
+        <div class="type-preview"><span class="text-slate-400 text-base">Default Tailwind duration (~150ms)</span></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Button Color</span><span class="type-spec">transition-colors / transition-all</span></div>
+        <div class="type-preview"><span class="text-slate-400 text-base">Default duration; CTA uses transition-all for shadow</span></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Card Background</span><span class="type-spec">transition-colors duration-500</span></div>
+        <div class="type-preview"><span class="text-slate-400 text-base">500ms — deliberate, luxurious card hover</span></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Feature Card Full</span><span class="type-spec">transition-all duration-300</span></div>
+        <div class="type-preview"><span class="text-slate-400 text-base">300ms — slightly snappier on feature grid</span></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Icon Scale</span><span class="type-spec">transition-transform (inherit)</span></div>
+        <div class="type-preview"><span class="text-slate-400 text-base">scale-110 on icon inside feature card on group-hover</span></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Glow Opacity</span><span class="type-spec">transition-opacity (inherit)</span></div>
+        <div class="type-preview"><span class="text-slate-400 text-base">opacity-20 → opacity-100 on blur glow div</span></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Doc Fan</span><span class="type-spec">transition-all duration-500 ease-out</span></div>
+        <div class="type-preview"><span class="text-slate-400 text-base">rotate + translate, ease-out curve</span></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Bar Chart Grow</span><span class="type-spec">transition-all duration-700 ease-out</span></div>
+        <div class="type-preview"><span class="text-slate-400 text-base">700ms ease-out height change on bar graph columns</span></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Client Pill Float</span><span class="type-spec">transition-transform duration-500/700 delay-75/150</span></div>
+        <div class="type-preview"><span class="text-slate-400 text-base">Staggered delays create ripple effect across pills</span></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-name">Marquee</span><span class="type-spec">marquee 40s linear infinite</span></div>
+        <div class="type-preview"><span class="text-slate-400 text-base">translateX(0) → translateX(-50%); paused on hover</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 6 — ICONS
+     ============================================================ -->
+<section class="z-10 pt-16 pb-32 px-4 relative" id="icons">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-16">
+      <span class="ds-section-label">06 — Icons</span>
+      <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-6">Icon System</h2>
+      <p class="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">Two icon systems in use: <span class="text-white font-medium">Lucide</span> (via <code class="text-slate-400 text-sm font-mono">data-lucide</code>) and <span class="text-white font-medium">Iconify</span> (social icons). All at <code class="text-slate-400 text-sm font-mono">stroke-width="1.5"</code> unless noted.</p>
+    </div>
+
+    <!-- Lucide Icons -->
+    <h3 class="text-xl font-semibold text-white mb-6 tracking-tight">Lucide Icons — Used in Production</h3>
+    <p class="text-sm text-slate-500 mb-6">Sizes used: w-3 h-3 (chips) · w-4 h-4 (nav/labels) · w-5 h-5 (nodes) · w-6 h-6 (feature) · w-24 h-24 (blur glow)</p>
+
+    <div class="icon-grid mb-12">
+      <!-- Lucide icons from the original HTML -->
+      <div class="icon-item">
+        <i class="w-5 h-5 text-slate-300" data-lucide="users" stroke-width="1.5"></i>
+        <span class="icon-name">users</span>
+      </div>
+      <div class="icon-item">
+        <i class="w-5 h-5 text-slate-300" data-lucide="banknote" stroke-width="1.5"></i>
+        <span class="icon-name">banknote</span>
+      </div>
+      <div class="icon-item">
+        <i class="w-5 h-5 text-blue-400" data-lucide="circle-dashed" stroke-width="1.5"></i>
+        <span class="icon-name">circle-dashed</span>
+      </div>
+      <div class="icon-item">
+        <i class="w-5 h-5 text-slate-300" data-lucide="arrow-right" stroke-width="1.5"></i>
+        <span class="icon-name">arrow-right</span>
+      </div>
+      <div class="icon-item">
+        <i class="w-5 h-5 text-slate-300" data-lucide="arrow-up-right" stroke-width="1.5"></i>
+        <span class="icon-name">arrow-up-right</span>
+      </div>
+      <div class="icon-item">
+        <i class="w-5 h-5 text-slate-300" data-lucide="arrow-down" stroke-width="1.5"></i>
+        <span class="icon-name">arrow-down</span>
+      </div>
+      <div class="icon-item">
+        <i class="w-5 h-5 text-slate-300" data-lucide="plus-circle" stroke-width="1.5"></i>
+        <span class="icon-name">plus-circle</span>
+      </div>
+      <div class="icon-item">
+        <i class="w-5 h-5 text-slate-300" data-lucide="more-horizontal" stroke-width="1.5"></i>
+        <span class="icon-name">more-horizontal</span>
+      </div>
+      <div class="icon-item">
+        <i class="w-5 h-5 text-slate-300" data-lucide="activity" stroke-width="1.5"></i>
+        <span class="icon-name">activity</span>
+      </div>
+      <div class="icon-item">
+        <i class="w-5 h-5 text-slate-300" data-lucide="eye" stroke-width="1.5"></i>
+        <span class="icon-name">eye</span>
+      </div>
+      <div class="icon-item">
+        <i class="w-5 h-5 text-slate-300" data-lucide="dollar-sign" stroke-width="1.5"></i>
+        <span class="icon-name">dollar-sign</span>
+      </div>
+      <div class="icon-item">
+        <i class="w-5 h-5 text-slate-300" data-lucide="shopping-cart" stroke-width="1.5"></i>
+        <span class="icon-name">shopping-cart</span>
+      </div>
+      <div class="icon-item">
+        <i class="w-5 h-5 text-slate-300" data-lucide="pie-chart" stroke-width="1.5"></i>
+        <span class="icon-name">pie-chart</span>
+      </div>
+      <div class="icon-item">
+        <i class="w-5 h-5 text-slate-300" data-lucide="radar" stroke-width="1.5"></i>
+        <span class="icon-name">radar</span>
+      </div>
+      <div class="icon-item">
+        <i class="w-5 h-5 text-slate-300" data-lucide="package" stroke-width="1.5"></i>
+        <span class="icon-name">package</span>
+      </div>
+      <div class="icon-item">
+        <i class="w-5 h-5 text-slate-300" data-lucide="layers" stroke-width="1.5"></i>
+        <span class="icon-name">layers</span>
+      </div>
+      <div class="icon-item">
+        <i class="w-5 h-5 text-slate-300" data-lucide="zap" stroke-width="1.5"></i>
+        <span class="icon-name">zap</span>
+      </div>
+      <div class="icon-item">
+        <i class="w-5 h-5 text-slate-300" data-lucide="rocket" stroke-width="1.5"></i>
+        <span class="icon-name">rocket</span>
+      </div>
+      <div class="icon-item">
+        <i class="w-5 h-5 text-emerald-400" data-lucide="shield-check" stroke-width="1.5"></i>
+        <span class="icon-name">shield-check</span>
+      </div>
+      <div class="icon-item">
+        <i class="w-5 h-5 text-white" data-lucide="check" stroke-width="2"></i>
+        <span class="icon-name">check (sw:2)</span>
+      </div>
+      <div class="icon-item">
+        <i class="w-5 h-5 text-slate-300" data-lucide="refresh-cw" stroke-width="1.5"></i>
+        <span class="icon-name">refresh-cw</span>
+      </div>
+      <div class="icon-item">
+        <i class="w-5 h-5 text-slate-300" data-lucide="lock" stroke-width="1.5"></i>
+        <span class="icon-name">lock</span>
+      </div>
+      <div class="icon-item">
+        <i class="w-5 h-5 text-slate-300" data-lucide="user" stroke-width="2"></i>
+        <span class="icon-name">user (sw:2)</span>
+      </div>
+    </div>
+
+    <!-- Iconify Social Icons -->
+    <h3 class="text-xl font-semibold text-white mb-6 tracking-tight">Iconify Icons — Social &amp; UI</h3>
+    <p class="text-sm text-slate-500 mb-6">Used for social platform logos and star ratings. Sizes: 16–24px.</p>
+
+    <div class="icon-grid mb-12">
+      <div class="icon-item">
+        <div class="w-9 h-9 rounded-full bg-[#0077b5] flex items-center justify-center text-white shadow-[0_0_15px_rgba(0,119,181,0.5)] border border-white/10">
+          <iconify-icon icon="mdi:linkedin" width="18"></iconify-icon>
+        </div>
+        <span class="icon-name">mdi:linkedin</span>
+      </div>
+      <div class="icon-item">
+        <div class="w-10 h-10 rounded-full bg-black border border-white/20 flex items-center justify-center text-white shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+          <iconify-icon icon="ic:baseline-tiktok" width="22"></iconify-icon>
+        </div>
+        <span class="icon-name">ic:baseline-tiktok</span>
+      </div>
+      <div class="icon-item">
+        <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] flex items-center justify-center text-white shadow-[0_0_15px_rgba(236,72,153,0.4)] border border-white/10">
+          <iconify-icon icon="mdi:instagram" width="18"></iconify-icon>
+        </div>
+        <span class="icon-name">mdi:instagram</span>
+      </div>
+      <div class="icon-item">
+        <div class="w-10 h-10 rounded-full bg-[#ff0000] flex items-center justify-center text-white shadow-[0_0_25px_rgba(255,0,0,0.4)] border border-white/10">
+          <iconify-icon icon="mdi:youtube" width="24"></iconify-icon>
+        </div>
+        <span class="icon-name">mdi:youtube</span>
+      </div>
+      <div class="icon-item">
+        <div class="w-9 h-9 rounded-full bg-black border border-white/20 flex items-center justify-center text-white shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+          <iconify-icon icon="ri:twitter-x-fill" width="16"></iconify-icon>
+        </div>
+        <span class="icon-name">ri:twitter-x-fill</span>
+      </div>
+      <div class="icon-item">
+        <div class="flex gap-0.5">
+          <iconify-icon class="text-yellow-400/90" height="20" icon="solar:star-bold" width="20"></iconify-icon>
+        </div>
+        <span class="icon-name">solar:star-bold</span>
+      </div>
+      <div class="icon-item">
+        <div>
+          <iconify-icon class="text-yellow-400" height="20" icon="solar:star-linear" width="20"></iconify-icon>
+        </div>
+        <span class="icon-name">solar:star-linear</span>
+      </div>
+    </div>
+
+    <!-- Icon Size Scale -->
+    <h3 class="text-xl font-semibold text-white mb-6 tracking-tight">Icon Size Scale</h3>
+    <div class="bg-[#111113]/60 border border-white/5 rounded-[2rem] p-8 flex flex-wrap items-end gap-8">
+      <div class="flex flex-col items-center gap-3">
+        <i class="w-3 h-3 text-slate-300" data-lucide="arrow-up-right" stroke-width="1.5"></i>
+        <span class="type-name">w-3 h-3<br>12px<br>Stat chips</span>
+      </div>
+      <div class="flex flex-col items-center gap-3">
+        <i class="w-4 h-4 text-slate-300" data-lucide="arrow-right" stroke-width="1.5"></i>
+        <span class="type-name">w-4 h-4<br>16px<br>Nav / Labels</span>
+      </div>
+      <div class="flex flex-col items-center gap-3">
+        <i class="w-5 h-5 text-slate-300" data-lucide="shield-check" stroke-width="1.5"></i>
+        <span class="type-name">w-5 h-5<br>20px<br>Badges / Nodes</span>
+      </div>
+      <div class="flex flex-col items-center gap-3">
+        <i class="w-6 h-6 text-slate-300" data-lucide="radar" stroke-width="1.5"></i>
+        <span class="type-name">w-6 h-6<br>24px<br>Feature cards</span>
+      </div>
+      <div class="flex flex-col items-center gap-3">
+        <i class="w-8 h-8 text-slate-300" data-lucide="arrow-down" stroke-width="1.5"></i>
+        <span class="type-name">w-8 h-8<br>32px<br>Scroll btn</span>
+      </div>
+      <div class="flex flex-col items-center gap-3">
+        <i class="w-10 h-10 text-slate-300" data-lucide="users" stroke-width="1.5"></i>
+        <span class="type-name">w-10 h-10<br>40px<br>Hero nodes</span>
+      </div>
+      <div class="flex flex-col items-center gap-3">
+        <i class="w-14 h-14 text-slate-300" data-lucide="package" stroke-width="1.5"></i>
+        <span class="type-name">w-14 h-14<br>56px<br>Feature icon btn</span>
+      </div>
+      <div class="flex flex-col items-center gap-3 opacity-40">
+        <i class="w-14 h-14 text-blue-500 blur-lg" data-lucide="zap" stroke-width="1.5"></i>
+        <span class="type-name">w-24 h-24<br>96px · blur-2xl<br>Glow accent only</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<script>
+  // Initialize Lucide Icons
+  lucide.createIcons();
+</script>
+
+</body></html>
