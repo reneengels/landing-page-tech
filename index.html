@@ -2,313 +2,550 @@
 <html lang="pt-BR" class="dark">
 
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Engels Tech — Consultoria de IA e Machine Learning</title>
-    <link rel="icon" type="image/png" href="assets/logo_v2.png" />
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Engels Tech — Consultoria de IA e Machine Learning</title>
+  <link rel="icon" type="image/png" href="assets/logo_v2.png" />
 
-    <!-- Typography System -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Typography System -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Tailwind CSS loaded directly for development (reproducing Wangflow build) -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind CSS loaded directly for development (reproducing Wangflow build) -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Icon System (Lucide) -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Icon System (Lucide) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            background-color: #0a0a0c;
-            color: #f8fafc;
-        }
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-color: #0a0a0c;
+      color: #f8fafc;
+    }
 
-        /* Ambient soft vignette for background animation readiness */
-        .hero-vignette {
-            box-shadow: inset 0 0 160px 40px #0a0a0c;
-        }
+    /* Ambient soft vignette for background animation readiness */
+    .hero-vignette {
+      box-shadow: inset 0 0 160px 40px #0a0a0c;
+    }
 
-        /* ============================================================
+    /* ============================================================
            1. CONTAINER
            ============================================================ */
-        .hero-bg-dots {
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-          z-index: 0;
-          overflow: hidden;
+    .hero-bg-dots {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
 
-          /* Soft radial mask: dots fade toward edges so center content
+      /* Soft radial mask: dots fade toward edges so center content
              (H1, CTAs) keeps visual priority. */
-          -webkit-mask-image: radial-gradient(
-            ellipse at center,
-            black 30%,
-            transparent 80%
-          );
-          mask-image: radial-gradient(
-            ellipse at center,
-            black 30%,
-            transparent 80%
-          );
-        }
+      -webkit-mask-image: radial-gradient(ellipse at center,
+          black 30%,
+          transparent 80%);
+      mask-image: radial-gradient(ellipse at center,
+          black 30%,
+          transparent 80%);
+    }
 
-        /* ============================================================
+    /* ============================================================
            2. BASE GRID — pure CSS, zero DOM cost
            ============================================================ */
-        .hero-bg-dots::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background-image: radial-gradient(
-            circle,
-            #3A4560 1px,
-            transparent 1.5px
-          );
-          background-size: 50px 50px;
-          background-position: 0 0;
-          opacity: 0.4;
-          animation: grid-breathe 2.5s ease-in-out infinite alternate;
-        }
+    .hero-bg-dots::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle,
+          #3A4560 1px,
+          transparent 1.5px);
+      background-size: 50px 50px;
+      background-position: 0 0;
+      opacity: 0.4;
+      animation: grid-breathe 2.5s ease-in-out infinite alternate;
+    }
 
-        @keyframes grid-breathe {
-          from { opacity: 0.15; transform: scale(1); }
-          to   { opacity: 0.55; transform: scale(1.02); }
-        }
+    @keyframes grid-breathe {
+      from {
+        opacity: 0.15;
+        transform: scale(1);
+      }
 
-        /* ============================================================
+      to {
+        opacity: 0.55;
+        transform: scale(1.02);
+      }
+    }
+
+    /* ============================================================
            3. ORGANIC DOTS — 24 individually animated dots
            ============================================================ */
-        .hero-bg-dots .dot {
-          position: absolute;
-          width: 2px;
-          height: 2px;
-          border-radius: 50%;
-          background: #60A5FA; /* Brighter blue for more intensity */
-          animation: dot-pulse calc(var(--dur, 5s) * 0.4) ease-in-out calc(var(--delay, 0s) * 0.4) infinite alternate;
-        }
+    .hero-bg-dots .dot {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: #60A5FA;
+      /* Brighter blue for more intensity */
+      animation: dot-pulse calc(var(--dur, 5s) * 0.4) ease-in-out calc(var(--delay, 0s) * 0.4) infinite alternate;
+    }
 
-        @keyframes dot-pulse {
-          from { opacity: 0.10; transform: scale(0.8); box-shadow: 0 0 0px 0px rgba(96, 165, 250, 0); }
-          to   { opacity: 0.85; transform: scale(2.5); box-shadow: 0 0 6px 1px rgba(96, 165, 250, 0.4); }
-        }
+    @keyframes dot-pulse {
+      from {
+        opacity: 0.10;
+        transform: scale(0.8);
+        box-shadow: 0 0 0px 0px rgba(96, 165, 250, 0);
+      }
 
-        /* ============================================================
+      to {
+        opacity: 0.85;
+        transform: scale(2.5);
+        box-shadow: 0 0 6px 1px rgba(96, 165, 250, 0.4);
+      }
+    }
+
+    /* ============================================================
            4. ACCESSIBILITY — reduced motion
            ============================================================ */
-        @media (prefers-reduced-motion: reduce) {
-          .hero-bg-dots::before {
-            animation: none;
-            opacity: 0.35;
-          }
-          .hero-bg-dots .dot {
-            animation: none;
-            opacity: 0.5;
-            transform: scale(1);
-          }
-        }
-    </style>
+    @media (prefers-reduced-motion: reduce) {
+      .hero-bg-dots::before {
+        animation: none;
+        opacity: 0.35;
+      }
+
+      .hero-bg-dots .dot {
+        animation: none;
+        opacity: 0.5;
+        transform: scale(1);
+      }
+    }
+
+    /* ---------------------------------
+           SMOOTH SCROLL & LAYOUT
+           --------------------------------- */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    section[id] {
+      scroll-margin-top: 6rem;
+    }
+
+    /* ---------------------------------
+           MÉTODO CARDS FADE-IN
+           --------------------------------- */
+    .metodo-card {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 700ms ease-out, transform 700ms ease-out;
+      will-change: opacity, transform;
+    }
+
+    .metodo-card.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .metodo-card {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+  </style>
 </head>
 
 <body class="min-h-screen overflow-x-hidden selection:bg-blue-500/30 selection:text-white text-slate-50 relative">
 
-    <!-- ==========================================
+  <!-- ==========================================
        BACKGROUND ANIMATION LAYER (Placeholder) 
        ========================================== -->
-    <!-- Target for future canvas/particle animation -->
-    <div class="hero-bg absolute inset-0 z-0 bg-[#0a0a0c] pointer-events-none overflow-hidden hero-vignette">
-        <!-- Subtle radial glow per design system to prevent flat black -->
-        <div
-            class="absolute top-[25%] left-1/2 -translate-x-1/2 w-[60vw] h-[60vh] bg-blue-500/5 blur-[120px] rounded-full mix-blend-screen">
-        </div>
+  <!-- Target for future canvas/particle animation -->
+  <div class="hero-bg fixed inset-0 z-0 bg-[#0a0a0c] pointer-events-none overflow-hidden hero-vignette">
+    <!-- Subtle radial glow per design system to prevent flat black -->
+    <div
+      class="absolute top-[25%] left-1/2 -translate-x-1/2 w-[60vw] h-[60vh] bg-blue-500/5 blur-[120px] rounded-full mix-blend-screen">
     </div>
+  </div>
 
-    <!-- ==========================================
+  <!-- ==========================================
        NAVBAR (Glass Pill Pattern)
        ========================================== -->
-    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl">
-        <div
-            class="flex bg-[#111113]/80 border-white/10 border rounded-full pt-2 pr-2 pb-2 pl-3 backdrop-blur-xl items-center justify-between">
-            <!-- Logo Area -->
-            <a href="#" class="flex items-center gap-3 pl-2">
-                <img src="assets/logo_v2.png" alt="Engels Tech Logo" class="w-8 h-8 object-contain">
-                <span class="font-semibold text-lg tracking-tight text-white">Engels Tech</span>
-            </a>
+  <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl">
+    <div
+      class="flex bg-[#111113]/80 border-white/10 border rounded-full pt-2 pr-2 pb-2 pl-3 backdrop-blur-xl items-center justify-between">
+      <!-- Logo Area -->
+      <a href="#" class="flex items-center gap-3 pl-2">
+        <img src="assets/logo_v2.png" alt="Engels Tech Logo" class="w-8 h-8 object-contain">
+        <span class="font-semibold text-lg tracking-tight text-white">Engels Tech</span>
+      </a>
 
-            <!-- Nav Links Center -->
-            <div class="hidden md:flex gap-8 text-base font-medium items-center">
-                <a class="text-slate-400 hover:text-white transition-colors" href="#">Serviços</a>
-                <a class="text-slate-400 hover:text-white transition-colors" href="#">Método</a>
-                <a class="text-slate-400 hover:text-white transition-colors" href="#">Contato</a>
-            </div>
+      <!-- Nav Links Center -->
+      <div class="hidden md:flex gap-8 text-base font-medium items-center">
+        <a class="ds-nav-link text-slate-400 hover:text-white transition-colors" href="#servicos">Serviços</a>
+        <a class="ds-nav-link text-slate-400 hover:text-white transition-colors" href="#metodo">Método</a>
+        <a class="ds-nav-link text-slate-400 hover:text-white transition-colors" href="#contato">Contato</a>
+      </div>
 
-            <!-- Right CTA (Desktop) -->
-            <div class="hidden md:flex items-center">
-                <a class="hover:bg-slate-200 transition-colors text-base font-semibold text-[#0a0a0c] bg-white rounded-full pt-2.5 pr-6 pb-2.5 pl-6"
-                    href="#">
-                    Discutir um projeto
-                </a>
-            </div>
+      <!-- Right CTA (Desktop) -->
+      <div class="hidden md:flex items-center">
+        <a class="hover:bg-slate-200 transition-colors text-base font-semibold text-[#0a0a0c] bg-white rounded-full pt-2.5 pr-6 pb-2.5 pl-6"
+          href="#">
+          Discutir um projeto
+        </a>
+      </div>
 
-            <!-- Mobile Hamburger Button -->
-            <button id="mobile-menu-btn"
-                class="flex md:hidden items-center justify-center p-2 mr-2 text-slate-300 hover:text-white transition-colors">
-                <i class="w-6 h-6" data-lucide="menu"></i>
-            </button>
-        </div>
+      <!-- Mobile Hamburger Button -->
+      <button id="mobile-menu-btn"
+        class="flex md:hidden items-center justify-center p-2 mr-2 text-slate-300 hover:text-white transition-colors">
+        <i class="w-6 h-6" data-lucide="menu"></i>
+      </button>
+    </div>
 
-        <!-- Mobile Menu Panel -->
-        <div id="mobile-menu"
-            class="hidden md:hidden absolute top-[calc(100%+16px)] left-0 w-full bg-[#111113]/95 border border-white/10 rounded-3xl p-6 backdrop-blur-xl shadow-2xl flex-col gap-6">
-            <div class="flex flex-col gap-5 text-center">
-                <a class="text-lg font-medium text-slate-300 hover:text-white transition-colors" href="#">Serviços</a>
-                <a class="text-lg font-medium text-slate-300 hover:text-white transition-colors" href="#">Método</a>
-                <a class="text-lg font-medium text-slate-300 hover:text-white transition-colors" href="#">Contato</a>
-            </div>
-            <div class="w-full h-px bg-white/10"></div>
-            <a class="w-full text-center hover:bg-slate-200 transition-colors text-lg font-semibold text-[#0a0a0c] bg-white rounded-full py-3.5"
-                href="#">
-                Discutir um projeto
-            </a>
-        </div>
-    </nav>
+    <!-- Mobile Menu Panel -->
+    <div id="mobile-menu"
+      class="hidden md:hidden absolute top-[calc(100%+16px)] left-0 w-full bg-[#111113]/95 border border-white/10 rounded-3xl p-6 backdrop-blur-xl shadow-2xl flex-col gap-6">
+      <div class="flex flex-col gap-5 text-center">
+        <a class="ds-nav-link text-lg font-medium text-slate-300 hover:text-white transition-colors"
+          href="#servicos">Serviços</a>
+        <a class="ds-nav-link text-lg font-medium text-slate-300 hover:text-white transition-colors"
+          href="#metodo">Método</a>
+        <a class="ds-nav-link text-lg font-medium text-slate-300 hover:text-white transition-colors"
+          href="#contato">Contato</a>
+      </div>
+      <div class="w-full h-px bg-white/10"></div>
+      <a class="w-full text-center hover:bg-slate-200 transition-colors text-lg font-semibold text-[#0a0a0c] bg-white rounded-full py-3.5"
+        href="#">
+        Discutir um projeto
+      </a>
+    </div>
+  </nav>
 
-    <!-- ==========================================
+  <!-- ==========================================
        HERO SECTION
        ========================================== -->
-    <main
-        class="flex flex-col min-h-screen text-center w-full z-10 pt-40 pr-4 pb-24 pl-4 relative items-center justify-center">
+  <main
+    class="flex flex-col min-h-screen text-center w-full z-10 pt-40 pr-4 pb-24 pl-4 relative items-center justify-center">
 
-        <!-- ============================================================
+    <!-- ============================================================
              5. MARKUP — Hybrid Dot Grid
              ============================================================ -->
-        <div class="hero-bg-dots" aria-hidden="true">
-          <span class="dot" style="top: 12%;  left: 8%;  --delay: 0.3s;  --dur: 4.2s"></span>
-          <span class="dot" style="top: 18%;  left: 22%; --delay: 2.1s;  --dur: 5.5s"></span>
-          <span class="dot" style="top: 9%;   left: 41%; --delay: 1.4s;  --dur: 4.8s"></span>
-          <span class="dot" style="top: 22%;  left: 58%; --delay: 3.2s;  --dur: 6.1s"></span>
-          <span class="dot" style="top: 14%;  left: 73%; --delay: 0.8s;  --dur: 5.0s"></span>
-          <span class="dot" style="top: 7%;   left: 89%; --delay: 4.0s;  --dur: 4.5s"></span>
+    <div class="hero-bg-dots" aria-hidden="true">
+      <span class="dot" style="top: 12%;  left: 8%;  --delay: 0.3s;  --dur: 4.2s"></span>
+      <span class="dot" style="top: 18%;  left: 22%; --delay: 2.1s;  --dur: 5.5s"></span>
+      <span class="dot" style="top: 9%;   left: 41%; --delay: 1.4s;  --dur: 4.8s"></span>
+      <span class="dot" style="top: 22%;  left: 58%; --delay: 3.2s;  --dur: 6.1s"></span>
+      <span class="dot" style="top: 14%;  left: 73%; --delay: 0.8s;  --dur: 5.0s"></span>
+      <span class="dot" style="top: 7%;   left: 89%; --delay: 4.0s;  --dur: 4.5s"></span>
 
-          <span class="dot" style="top: 33%;  left: 4%;  --delay: 2.7s;  --dur: 5.8s"></span>
-          <span class="dot" style="top: 38%;  left: 17%; --delay: 1.1s;  --dur: 4.4s"></span>
-          <span class="dot" style="top: 31%;  left: 84%; --delay: 3.6s;  --dur: 5.2s"></span>
-          <span class="dot" style="top: 42%;  left: 93%; --delay: 0.5s;  --dur: 4.9s"></span>
+      <span class="dot" style="top: 33%;  left: 4%;  --delay: 2.7s;  --dur: 5.8s"></span>
+      <span class="dot" style="top: 38%;  left: 17%; --delay: 1.1s;  --dur: 4.4s"></span>
+      <span class="dot" style="top: 31%;  left: 84%; --delay: 3.6s;  --dur: 5.2s"></span>
+      <span class="dot" style="top: 42%;  left: 93%; --delay: 0.5s;  --dur: 4.9s"></span>
 
-          <span class="dot" style="top: 51%;  left: 6%;  --delay: 4.3s;  --dur: 5.6s"></span>
-          <span class="dot" style="top: 56%;  left: 95%; --delay: 1.8s;  --dur: 4.7s"></span>
+      <span class="dot" style="top: 51%;  left: 6%;  --delay: 4.3s;  --dur: 5.6s"></span>
+      <span class="dot" style="top: 56%;  left: 95%; --delay: 1.8s;  --dur: 4.7s"></span>
 
-          <span class="dot" style="top: 64%;  left: 11%; --delay: 3.1s;  --dur: 5.3s"></span>
-          <span class="dot" style="top: 69%;  left: 26%; --delay: 0.6s;  --dur: 6.0s"></span>
-          <span class="dot" style="top: 72%;  left: 78%; --delay: 2.4s;  --dur: 4.6s"></span>
-          <span class="dot" style="top: 67%;  left: 91%; --delay: 4.7s;  --dur: 5.4s"></span>
+      <span class="dot" style="top: 64%;  left: 11%; --delay: 3.1s;  --dur: 5.3s"></span>
+      <span class="dot" style="top: 69%;  left: 26%; --delay: 0.6s;  --dur: 6.0s"></span>
+      <span class="dot" style="top: 72%;  left: 78%; --delay: 2.4s;  --dur: 4.6s"></span>
+      <span class="dot" style="top: 67%;  left: 91%; --delay: 4.7s;  --dur: 5.4s"></span>
 
-          <span class="dot" style="top: 81%;  left: 9%;  --delay: 1.6s;  --dur: 5.1s"></span>
-          <span class="dot" style="top: 87%;  left: 24%; --delay: 3.9s;  --dur: 4.3s"></span>
-          <span class="dot" style="top: 84%;  left: 47%; --delay: 0.2s;  --dur: 5.7s"></span>
-          <span class="dot" style="top: 91%;  left: 63%; --delay: 2.9s;  --dur: 4.8s"></span>
-          <span class="dot" style="top: 86%;  left: 81%; --delay: 1.3s;  --dur: 5.5s"></span>
-          <span class="dot" style="top: 93%;  left: 94%; --delay: 4.4s;  --dur: 4.5s"></span>
+      <span class="dot" style="top: 81%;  left: 9%;  --delay: 1.6s;  --dur: 5.1s"></span>
+      <span class="dot" style="top: 87%;  left: 24%; --delay: 3.9s;  --dur: 4.3s"></span>
+      <span class="dot" style="top: 84%;  left: 47%; --delay: 0.2s;  --dur: 5.7s"></span>
+      <span class="dot" style="top: 91%;  left: 63%; --delay: 2.9s;  --dur: 4.8s"></span>
+      <span class="dot" style="top: 86%;  left: 81%; --delay: 1.3s;  --dur: 5.5s"></span>
+      <span class="dot" style="top: 93%;  left: 94%; --delay: 4.4s;  --dur: 4.5s"></span>
 
-          <span class="dot" style="top: 47%;  left: 32%; --delay: 3.5s;  --dur: 6.2s"></span>
-          <span class="dot" style="top: 60%;  left: 67%; --delay: 0.9s;  --dur: 5.9s"></span>
+      <span class="dot" style="top: 47%;  left: 32%; --delay: 3.5s;  --dur: 6.2s"></span>
+      <span class="dot" style="top: 60%;  left: 67%; --delay: 0.9s;  --dur: 5.9s"></span>
+    </div>
+
+    <!-- Eyebrow Badge (Glass Pill) -->
+    <div
+      class="relative z-20 inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10 bg-[#111113]/80 text-slate-300 text-[11px] sm:text-xs md:text-base font-medium mb-12 backdrop-blur-md transition-colors hover:border-white/20 cursor-default whitespace-nowrap">
+      <i class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-400" data-lucide="code-2" stroke-width="1.5"></i>
+      <span>Machine Learning · Automação · Engenharia de Dados</span>
+    </div>
+
+    <!-- H1 (Two Lines, Top White to Bottom Gradient) -->
+    <h1
+      class="relative z-20 leading-[1.1] md:leading-[1.05] text-4xl md:text-6xl font-semibold tracking-tight w-full max-w-[1400px] mx-auto mb-12 bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-slate-400">
+      <span class="block xl:whitespace-nowrap">Machine Learning, automação e dados.</span>
+      <span class="block pb-2 mt-2 md:mt-0 xl:whitespace-nowrap">Do código ao deploy.</span>
+    </h1>
+
+    <!-- Subhead (Body Large, Muted) -->
+    <p class="relative z-20 text-lg md:text-2xl font-normal text-slate-400 max-w-3xl mx-auto mb-16 leading-relaxed">
+      Consultoria técnica para empresas que precisam de soluções de IA funcionando — não slides, não no papel.
+      Da modelagem ao deploy, em Python.
+    </p>
+
+    <!-- CTAs (Primary Button + Secondary Text Link) -->
+    <div class="relative z-20 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 w-full sm:w-auto">
+      <!-- Primary Action -->
+      <a class="w-full sm:w-auto hover:bg-slate-200 transition-all flex items-center justify-center gap-2 text-lg font-semibold text-[#0a0a0c] bg-white rounded-full pt-4 pr-10 pb-4 pl-10"
+        href="#">
+        Discutir um projeto &rarr;
+      </a>
+
+      <!-- Secondary Action (Outline Button - Desktop) -->
+      <a class="hidden sm:flex px-10 py-4 rounded-full bg-transparent border border-white/15 text-white font-semibold text-lg hover:bg-white/5 transition-all items-center justify-center"
+        href="#">
+        Ver serviços
+      </a>
+
+      <!-- Secondary Action (Text Link - Mobile) -->
+      <a class="sm:hidden flex items-center justify-center gap-2 text-[14px] text-slate-300 opacity-70 hover:opacity-100 transition-opacity font-medium mt-1"
+        href="#">
+        Ver serviços <i class="w-3.5 h-3.5" data-lucide="arrow-right" stroke-width="2"></i>
+      </a>
+    </div>
+
+    <!-- Stack Signature -->
+    <p
+      class="relative z-20 mt-10 font-mono text-[12px] tracking-tight text-slate-500 text-center mx-auto px-4 max-w-full break-words">
+      Python · FastAPI · PostgreSQL · scikit-learn · LLMs · n8n
+    </p>
+
+    <!-- Decorative vertical falling lines -->
+    <div
+      class="absolute bottom-32 left-1/2 -translate-x-1/2 w-full max-w-md h-32 flex justify-center gap-8 opacity-20 pointer-events-none z-0">
+      <div class="w-[1px] h-full bg-gradient-to-b from-transparent via-white to-transparent"></div>
+      <div class="w-[1px] h-[80%] mt-4 bg-gradient-to-b from-transparent via-white to-transparent"></div>
+      <div class="w-[1px] h-[60%] mt-8 bg-gradient-to-b from-transparent via-white to-transparent"></div>
+    </div>
+
+    <!-- Scroll Down Indicator (Bottom Left) -->
+    <div
+      class="absolute bottom-10 left-10 hidden md:flex items-center gap-3 bg-[#111113]/80 backdrop-blur-md pl-3 pr-5 py-2.5 rounded-full border border-white/10 z-20">
+      <div class="w-8 h-8 rounded-full bg-white text-[#0a0a0c] flex items-center justify-center">
+        <i class="w-4 h-4" data-lucide="arrow-down" stroke-width="1.5"></i>
+      </div>
+      <span class="text-sm font-semibold text-slate-400 tracking-tight">Scroll down</span>
+    </div>
+
+  </main>
+
+  <!-- ==========================================
+       MÉTODO SECTION
+       ========================================== -->
+  <section id="metodo" class="z-10 pt-32 pb-24 px-4 relative">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- HEADER (centered) -->
+      <div class="text-center mb-16">
+        <span
+          class="ds-section-label inline-block text-sm md:text-base font-medium tracking-widest uppercase text-slate-400 mb-4">02
+          — Método</span>
+        <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-6">Como um projeto acontece</h2>
+        <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">Sem promessas vagas, sem "vamos
+          ver no caminho". Quatro etapas claras, do diagnóstico ao sistema rodando — com você sabendo exatamente onde
+          está em cada momento.</p>
+      </div>
+
+      <!-- STEPPER HORIZONTAL HÍBRIDO (4 cards) -->
+      <div class="relative">
+        <!-- Connector line, desktop only -->
+        <div
+          class="hidden lg:block absolute top-[8.5rem] left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent z-0">
         </div>
 
-        <!-- Eyebrow Badge (Glass Pill) -->
-        <div
-            class="relative z-20 inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10 bg-[#111113]/80 text-slate-300 text-[11px] sm:text-xs md:text-base font-medium mb-12 backdrop-blur-md transition-colors hover:border-white/20 cursor-default whitespace-nowrap">
-            <i class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-400" data-lucide="code-2" stroke-width="1.5"></i>
-            <span>Machine Learning · Automação · Engenharia de Dados</span>
-        </div>
+        <!-- 4-column grid of cards -->
+        <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6 relative z-10">
 
-        <!-- H1 (Two Lines, Top White to Bottom Gradient) -->
-        <h1
-            class="relative z-20 leading-[1.1] md:leading-[1.05] text-4xl md:text-6xl font-semibold tracking-tight w-full max-w-[1400px] mx-auto mb-12 bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-slate-400">
-            <span class="block xl:whitespace-nowrap">Machine Learning, automação e dados.</span>
-            <span class="block pb-2 mt-2 md:mt-0 xl:whitespace-nowrap">Do código ao deploy.</span>
-        </h1>
-
-        <!-- Subhead (Body Large, Muted) -->
-        <p class="relative z-20 text-lg md:text-2xl font-normal text-slate-400 max-w-3xl mx-auto mb-16 leading-relaxed">
-            Consultoria técnica para empresas que precisam de soluções de IA funcionando — não slides, não no papel.
-            Da modelagem ao deploy, em Python.
-        </p>
-
-        <!-- CTAs (Primary Button + Secondary Text Link) -->
-        <div
-            class="relative z-20 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 w-full sm:w-auto">
-            <!-- Primary Action -->
-            <a class="w-full sm:w-auto hover:bg-slate-200 transition-all flex items-center justify-center gap-2 text-lg font-semibold text-[#0a0a0c] bg-white rounded-full pt-4 pr-10 pb-4 pl-10"
-                href="#">
-                Discutir um projeto &rarr;
-            </a>
-
-            <!-- Secondary Action (Outline Button - Desktop) -->
-            <a class="hidden sm:flex px-10 py-4 rounded-full bg-transparent border border-white/15 text-white font-semibold text-lg hover:bg-white/5 transition-all items-center justify-center"
-                href="#">
-                Ver serviços
-            </a>
-
-            <!-- Secondary Action (Text Link - Mobile) -->
-            <a class="sm:hidden flex items-center justify-center gap-2 text-[14px] text-slate-300 opacity-70 hover:opacity-100 transition-opacity font-medium mt-1"
-                href="#">
-                Ver serviços <i class="w-3.5 h-3.5" data-lucide="arrow-right" stroke-width="2"></i>
-            </a>
-        </div>
-
-        <!-- Stack Signature -->
-        <p
-            class="relative z-20 mt-10 font-mono text-[12px] tracking-tight text-slate-500 text-center mx-auto px-4 max-w-full break-words">
-            Python · FastAPI · PostgreSQL · scikit-learn · LLMs · n8n
-        </p>
-
-        <!-- Decorative vertical falling lines -->
-        <div
-            class="absolute bottom-32 left-1/2 -translate-x-1/2 w-full max-w-md h-32 flex justify-center gap-8 opacity-20 pointer-events-none z-0">
-            <div class="w-[1px] h-full bg-gradient-to-b from-transparent via-white to-transparent"></div>
-            <div class="w-[1px] h-[80%] mt-4 bg-gradient-to-b from-transparent via-white to-transparent"></div>
-            <div class="w-[1px] h-[60%] mt-8 bg-gradient-to-b from-transparent via-white to-transparent"></div>
-        </div>
-
-        <!-- Scroll Down Indicator (Bottom Left) -->
-        <div
-            class="absolute bottom-10 left-10 hidden md:flex items-center gap-3 bg-[#111113]/80 backdrop-blur-md pl-3 pr-5 py-2.5 rounded-full border border-white/10 z-20">
-            <div class="w-8 h-8 rounded-full bg-white text-[#0a0a0c] flex items-center justify-center">
-                <i class="w-4 h-4" data-lucide="arrow-down" stroke-width="1.5"></i>
+          <!-- Card 01 -->
+          <div
+            class="bg-[#111113]/50 border border-white/5 rounded-[2rem] p-7 lg:p-8 relative overflow-hidden hover:bg-[#151518] transition-all duration-300 group metodo-card"
+            data-stagger-index="0">
+            <div
+              class="text-5xl font-semibold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white/40 to-white/5 group-hover:from-blue-300/60 group-hover:to-blue-500/10 transition-all duration-500 mb-8">
+              01
             </div>
-            <span class="text-sm font-semibold text-slate-400 tracking-tight">Scroll down</span>
+            <div class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-6">
+              <i data-lucide="search" class="w-6 h-6 text-slate-300" stroke-width="1.5"></i>
+            </div>
+            <h3 class="text-2xl font-semibold text-white tracking-tight mb-3">Diagnóstico</h3>
+            <p class="text-base text-slate-400 leading-relaxed">
+              Imersão técnica no problema. Avalio dados disponíveis, restrições do sistema atual e métrica de sucesso.
+              Você recebe um documento curto com o diagnóstico e o plano de ataque.
+            </p>
+          </div>
+
+          <!-- Card 02 -->
+          <div
+            class="bg-[#111113]/50 border border-white/5 rounded-[2rem] p-7 lg:p-8 relative overflow-hidden hover:bg-[#151518] transition-all duration-300 group metodo-card"
+            data-stagger-index="1">
+            <div
+              class="text-5xl font-semibold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white/40 to-white/5 group-hover:from-blue-300/60 group-hover:to-blue-500/10 transition-all duration-500 mb-8">
+              02
+            </div>
+            <div class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-6">
+              <i data-lucide="flask-conical" class="w-6 h-6 text-slate-300" stroke-width="1.5"></i>
+            </div>
+            <h3 class="text-2xl font-semibold text-white tracking-tight mb-3">Prova de conceito</h3>
+            <p class="text-base text-slate-400 leading-relaxed">
+              Modelo ou automação funcional rodando em ambiente controlado, com dados reais. Não é slide, não é demo de
+              chatbot — é protótipo testável.
+            </p>
+          </div>
+
+          <!-- Card 03 -->
+          <div
+            class="bg-[#111113]/50 border border-white/5 rounded-[2rem] p-7 lg:p-8 relative overflow-hidden hover:bg-[#151518] transition-all duration-300 group metodo-card"
+            data-stagger-index="2">
+            <div
+              class="text-5xl font-semibold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white/40 to-white/5 group-hover:from-blue-300/60 group-hover:to-blue-500/10 transition-all duration-500 mb-8">
+              03
+            </div>
+            <div class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-6">
+              <i data-lucide="server" class="w-6 h-6 text-slate-300" stroke-width="1.5"></i>
+            </div>
+            <h3 class="text-2xl font-semibold text-white tracking-tight mb-3">Produção</h3>
+            <p class="text-base text-slate-400 leading-relaxed">
+              API, pipeline, observabilidade, testes. O que estava em notebook vira sistema confiável que continua
+              funcionando depois que eu saio.
+            </p>
+          </div>
+
+          <!-- Card 04 -->
+          <div
+            class="bg-[#111113]/50 border border-white/5 rounded-[2rem] p-7 lg:p-8 relative overflow-hidden hover:bg-[#151518] transition-all duration-300 group metodo-card"
+            data-stagger-index="3">
+            <div
+              class="text-5xl font-semibold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white/40 to-white/5 group-hover:from-blue-300/60 group-hover:to-blue-500/10 transition-all duration-500 mb-8">
+              04
+            </div>
+            <div class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-6">
+              <i data-lucide="life-buoy" class="w-6 h-6 text-slate-300" stroke-width="1.5"></i>
+            </div>
+            <h3 class="text-2xl font-semibold text-white tracking-tight mb-3">Operação</h3>
+            <p class="text-base text-slate-400 leading-relaxed">
+              Acompanhamento durante as primeiras semanas em produção. Ajustes, refinos e transferência de conhecimento
+              para o seu time.
+            </p>
+          </div>
+
         </div>
+      </div>
 
-    </main>
+    </div>
+  </section>
 
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
 
-        // Mobile menu toggle logic
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+    // Mobile menu toggle logic
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-        if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', () => {
-                const isHidden = mobileMenu.classList.contains('hidden');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.contains('hidden');
 
-                if (isHidden) {
-                    mobileMenu.classList.remove('hidden');
-                    mobileMenu.classList.add('flex');
-                    mobileMenuBtn.innerHTML = '<i class="w-6 h-6" data-lucide="x"></i>';
-                } else {
-                    mobileMenu.classList.add('hidden');
-                    mobileMenu.classList.remove('flex');
-                    mobileMenuBtn.innerHTML = '<i class="w-6 h-6" data-lucide="menu"></i>';
-                }
-                lucide.createIcons();
-            });
+        if (isHidden) {
+          mobileMenu.classList.remove('hidden');
+          mobileMenu.classList.add('flex');
+          mobileMenuBtn.innerHTML = '<i class="w-6 h-6" data-lucide="x"></i>';
+        } else {
+          mobileMenu.classList.add('hidden');
+          mobileMenu.classList.remove('flex');
+          mobileMenuBtn.innerHTML = '<i class="w-6 h-6" data-lucide="menu"></i>';
         }
-    </script>
+        lucide.createIcons();
+      });
+    }
+  </script>
+
+  <!-- Scroll Interactions (Smooth nav, fade-ins, active state) -->
+  <script>
+    (function () {
+      if (!('IntersectionObserver' in window)) {
+        // Fallback: show cards immediately
+        document.querySelectorAll('.metodo-card').forEach(el => el.classList.add('is-visible'));
+        return;
+      }
+
+      // --- 1. Fade-In Método Cards (Once per load) ---
+      const cards = document.querySelectorAll('.metodo-card');
+      if (cards.length > 0) {
+        const cardObserver = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const idx = parseInt(entry.target.dataset.staggerIndex || '0', 10);
+              setTimeout(() => entry.target.classList.add('is-visible'), idx * 100);
+              obs.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.15,
+          rootMargin: '0px 0px -50px 0px'
+        });
+        cards.forEach(card => cardObserver.observe(card));
+      }
+
+      // --- 2. Active Nav Highlight on Scroll ---
+      const navLinks = document.querySelectorAll('a.ds-nav-link[href^="#"]');
+      if (navLinks.length > 0) {
+        const linkMap = {};
+        navLinks.forEach(link => {
+          const id = link.getAttribute('href').replace('#', '');
+          if (id) linkMap[id] = true;
+        });
+
+        const sectionIds = Object.keys(linkMap);
+        if (sectionIds.length > 0) {
+          const visibility = {};
+          const setActive = () => {
+            let activeId = null;
+            let maxRatio = 0;
+            Object.entries(visibility).forEach(([id, ratio]) => {
+              if (ratio > maxRatio) {
+                maxRatio = ratio;
+                activeId = id;
+              }
+            });
+
+            navLinks.forEach(link => link.classList.remove('is-active'));
+            if (activeId) {
+              navLinks.forEach(link => {
+                if (link.getAttribute('href') === '#' + activeId) {
+                  link.classList.add('is-active');
+                }
+              });
+            }
+          };
+
+          const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              visibility[entry.target.id] = entry.isIntersecting ? entry.intersectionRatio : 0;
+            });
+            setActive();
+          }, {
+            threshold: [0, 0.25, 0.5, 0.75, 1],
+            rootMargin: '-80px 0px -40% 0px'
+          });
+
+          sectionIds.forEach(id => {
+            const section = document.getElementById(id);
+            if (section) navObserver.observe(section);
+          });
+        }
+      }
+    })();
+  </script>
 </body>
 
 </html>
