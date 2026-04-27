@@ -144,6 +144,11 @@ section[id] {
   transform: translateY(0);
 }
 
+.ds-nav-link:hover,
+.ds-nav-link.is-active {
+  color: #60A5FA !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
 
   .metodo-card,
