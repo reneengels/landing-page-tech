@@ -120,22 +120,26 @@ section[id] {
 }
 
 /* ---------------------------------
-       MÉTODO CARDS FADE-IN
+       FADE-IN ANIMATION
        --------------------------------- */
-.metodo-card {
+.metodo-card,
+.fade-in-up {
   opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 700ms ease-out, transform 700ms ease-out;
+  transform: translateY(24px);
+  transition: opacity 1000ms ease-out, transform 1000ms ease-out;
   will-change: opacity, transform;
 }
 
-.metodo-card.is-visible {
+.metodo-card.is-visible,
+.fade-in-up.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .metodo-card {
+
+  .metodo-card,
+  .fade-in-up {
     opacity: 1;
     transform: none;
     transition: none;

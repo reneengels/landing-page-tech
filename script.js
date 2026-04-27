@@ -26,18 +26,18 @@ if (mobileMenuBtn && mobileMenu) {
 (function () {
     if (!('IntersectionObserver' in window)) {
         // Fallback: show cards immediately
-        document.querySelectorAll('.metodo-card').forEach(el => el.classList.add('is-visible'));
+        document.querySelectorAll('.metodo-card, .fade-in-up').forEach(el => el.classList.add('is-visible'));
         return;
     }
 
-    // --- 1. Fade-In Método Cards (Once per load) ---
-    const cards = document.querySelectorAll('.metodo-card');
+    // --- 1. Fade-In Elements (Once per load) ---
+    const cards = document.querySelectorAll('.metodo-card, .fade-in-up');
     if (cards.length > 0) {
         const cardObserver = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const idx = parseInt(entry.target.dataset.staggerIndex || '0', 10);
-                    setTimeout(() => entry.target.classList.add('is-visible'), idx * 100);
+                    setTimeout(() => entry.target.classList.add('is-visible'), idx * 200);
                     obs.unobserve(entry.target);
                 }
             });
