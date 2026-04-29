@@ -133,8 +133,8 @@ section[id] {
 .metodo-card,
 .fade-in-up {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 1000ms ease-out, transform 1000ms ease-out;
+  transform: translateY(32px);
+  transition: opacity 2000ms cubic-bezier(0.16, 1, 0.3, 1), transform 2000ms cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
@@ -158,3 +158,37 @@ section[id] {
     transition: none;
   }
 }
+
+.mask-vertical-faded {
+  mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+}
+
+/* ---------------------------------
+       FORM & DROPDOWN PATTERNS
+       --------------------------------- */
+.ds-custom-select {
+  z-index: 1;
+}
+
+.ds-custom-select.is-active {
+  z-index: 50;
+}
+
+.ds-dropdown-menu {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.is-active .ds-dropdown-menu {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+  pointer-events: auto !important;
+}
+
+.ds-option:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+

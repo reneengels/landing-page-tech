@@ -6,19 +6,47 @@ const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 
 if (mobileMenuBtn && mobileMenu) {
-    mobileMenuBtn.addEventListener('click', () => {
+    const toggleMenu = () => {
         const isHidden = mobileMenu.classList.contains('hidden');
 
         if (isHidden) {
             mobileMenu.classList.remove('hidden');
             mobileMenu.classList.add('flex');
-            mobileMenuBtn.innerHTML = '<i class="w-6 h-6" data-lucide="x"></i>';
+            mobileMenuBtn.innerHTML = '<i class="w-6 h-6 text-white" data-lucide="x"></i>';
         } else {
             mobileMenu.classList.add('hidden');
             mobileMenu.classList.remove('flex');
-            mobileMenuBtn.innerHTML = '<i class="w-6 h-6" data-lucide="menu"></i>';
+            mobileMenuBtn.innerHTML = '<i class="w-6 h-6 text-white" data-lucide="menu"></i>';
         }
         lucide.createIcons();
+    };
+
+    mobileMenuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
+    });
+
+    // Prevent menu from closing when clicking inside it
+    mobileMenu.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+
+    // Close menu when clicking a link
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (!mobileMenu.classList.contains('hidden')) {
+                toggleMenu();
+            }
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        if (!isHidden && !mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+            toggleMenu();
+        }
     });
 }
 
@@ -37,7 +65,7 @@ if (mobileMenuBtn && mobileMenu) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const idx = parseInt(entry.target.dataset.staggerIndex || '0', 10);
-                    setTimeout(() => entry.target.classList.add('is-visible'), idx * 200);
+                    setTimeout(() => entry.target.classList.add('is-visible'), idx * 300);
                     obs.unobserve(entry.target);
                 }
             });
