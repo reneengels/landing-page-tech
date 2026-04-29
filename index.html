@@ -1,171 +1,817 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR" class="dark">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Engels Tech | Soluções em IA e Automação</title>
-    <meta name="description"
-        content="Engels Tech - Consultoria e desenvolvimento especializado em IA, automações, bots e machine learning. Transformando o futuro com tecnologia avançada.">
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Engels Tech — Consultoria de IA e Machine Learning</title>
+  <link rel="icon" type="image/png" href="assets/logo_v2.png" />
 
-    <!-- Fonts & Icons -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Typography System -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/logo_v2.png">
-    <link rel="apple-touch-icon" href="assets/logo_v2.png">
+  <!-- Tailwind CSS loaded directly for development (reproducing Wangflow build) -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- SEO -->
-    <link rel="canonical" href="#">
+  <!-- Icon System (Lucide) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body>
+<body class="min-h-screen overflow-x-hidden selection:bg-blue-500/30 selection:text-white text-slate-50 relative">
 
-    <nav id="navbar">
-        <a href="#" class="logo">
-            <img src="assets/logo_v2.png" alt="Engels Tech Icon" id="site-logo">
-            <span class="logo-text">ENGELS TECH</span>
+  <!-- ==========================================
+       BACKGROUND ANIMATION LAYER (Placeholder) 
+       ========================================== -->
+  <!-- Target for future canvas/particle animation -->
+  <div class="hero-bg fixed inset-0 z-0 bg-[#0a0a0c] pointer-events-none overflow-hidden hero-vignette">
+    <!-- Subtle radial glow per design system to prevent flat black -->
+    <div
+      class="absolute top-[20%] left-1/2 -translate-x-1/2 w-[60vw] h-[60vh] bg-teal-500/10 blur-[120px] rounded-full mix-blend-screen">
+    </div>
+    <div
+      class="absolute top-[15%] left-[40%] w-[30vw] h-[30vh] bg-emerald-400/5 blur-[80px] rounded-full mix-blend-screen opacity-50">
+    </div>
+  </div>
+
+  <!-- ==========================================
+       NAVBAR (Glass Pill Pattern)
+       ========================================== -->
+  <header
+    class="fixed top-0 left-0 right-0 z-[100] bg-[#0a0a0c]/80 backdrop-blur-xl border-b border-white/5 h-20 md:h-24 flex items-center">
+    <nav class="w-[95%] max-w-5xl mx-auto relative">
+      <div
+        class="flex bg-[#111113]/80 border-white/10 border rounded-full pt-2 pr-2 pb-2 pl-3 backdrop-blur-xl items-center justify-between">
+        <!-- Logo Area -->
+        <a href="#" class="flex items-center gap-3 pl-2">
+          <img src="assets/logo_v2.png" alt="Engels Tech Logo" class="w-8 h-8 object-contain">
+          <span class="font-semibold text-lg tracking-tight text-white">Engels Tech</span>
         </a>
-        <ul class="nav-links" id="nav-links">
-            <li><a href="#services">Serviços</a></li>
-            <li><a href="#innovation">Inovação</a></li>
-            <li><a href="#about">Sobre</a></li>
-            <li class="mobile-cta"><a href="#contact" class="cta-button">Vamos Conversar</a></li>
-        </ul>
-        <a href="#contact" class="cta-button desktop-cta">Vamos Conversar</a>
-        <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
+
+        <!-- Nav Links Center -->
+        <div class="hidden md:flex gap-8 text-base font-medium items-center">
+          <a class="ds-nav-link text-slate-400 hover:text-white transition-colors" href="#metodo">Método</a>
+          <a class="ds-nav-link text-slate-400 hover:text-white transition-colors" href="#servicos">Serviços</a>
+          <a class="ds-nav-link text-slate-400 hover:text-white transition-colors" href="#contato">Contato</a>
+        </div>
+
+        <!-- Right CTA (Desktop) -->
+        <div class="hidden md:flex items-center">
+          <a class="hover:bg-slate-200 transition-colors text-base font-semibold text-[#0a0a0c] bg-white rounded-full pt-2.5 pr-6 pb-2.5 pl-6"
+            href="#contato">
+            Discutir um projeto
+          </a>
+        </div>
+
+        <!-- Mobile Hamburger Button -->
+        <button id="mobile-menu-btn"
+          class="flex md:hidden items-center justify-center p-2 mr-1 text-white hover:bg-white/5 rounded-lg transition-colors">
+          <i class="w-6 h-6" data-lucide="menu"></i>
         </button>
+      </div>
+
+      <!-- Mobile Menu Panel -->
+      <div id="mobile-menu"
+        class="hidden md:hidden absolute top-[calc(100%+16px)] left-0 w-full bg-[#111113]/95 border border-white/10 rounded-3xl p-6 backdrop-blur-xl shadow-2xl flex-col gap-6">
+        <div class="flex flex-col gap-5 text-center">
+          <a class="ds-nav-link text-lg font-medium text-slate-300 hover:text-white transition-colors"
+            href="#metodo">Método</a>
+          <a class="ds-nav-link text-lg font-medium text-slate-300 hover:text-white transition-colors"
+            href="#servicos">Serviços</a>
+          <a class="ds-nav-link text-lg font-medium text-slate-300 hover:text-white transition-colors"
+            href="#contato">Contato</a>
+        </div>
+        <div class="w-full h-px bg-white/10"></div>
+        <a class="w-full text-center hover:bg-slate-200 transition-colors text-lg font-semibold text-[#0a0a0c] bg-white rounded-full py-3.5"
+          href="#contato">
+          Discutir um projeto
+        </a>
+      </div>
     </nav>
+  </header>
 
-    <header class="hero" id="hero">
-        <div class="container hero-content reveal">
-            <h1>Inovação que Impulsiona o Futuro</h1>
-            <p>Especialistas em Inteligência Artificial, automações personalizadas e soluções robustas em Python para
-                elevar o patamar do seu negócio.</p>
-            <div class="hero-btns">
-                <a href="#services" class="cta-button">Ver Nossas Soluções</a>
-            </div>
-        </div>
-    </header>
+  <!-- ==========================================
+       HERO SECTION
+       ========================================== -->
+  <main
+    class="flex flex-col min-h-screen text-center w-full z-10 pt-24 md:pt-28 pr-4 pb-12 md:pb-24 pl-4 relative items-center justify-between">
 
-    <section id="services">
-        <div class="container section-title reveal">
-            <h2>Nossas Soluções</h2>
-            <p>Tecnologia de ponta para desafios complexos.</p>
-        </div>
-        <div class="container services-grid">
-            <div class="glass-card service-card reveal">
-                <i class="fas fa-brain"></i>
-                <h3>Inteligência Artificial</h3>
-                <p>A Engels Tech implementa modelos de IA generativa e preditiva para otimizar processos e criar
-                    experiências únicas.</p>
-            </div>
-            <div class="glass-card service-card reveal">
-                <i class="fas fa-robot"></i>
-                <h3>Automações e Bots</h3>
-                <p>Desenvolvimento de bots inteligentes e automações de fluxo de trabalho que economizam tempo e
-                    recursos para o negócio.</p>
-            </div>
-            <div class="glass-card service-card reveal">
-                <i class="fab fa-python"></i>
-                <h3>Desenvolvimento Python</h3>
-                <p>Arquitetura de sistemas escaláveis e eficientes utilizando o que há de mais moderno no ecossistema
-                    Python.</p>
-            </div>
-            <div class="glass-card service-card reveal">
-                <i class="fas fa-chart-line"></i>
-                <h3>Machine Learning</h3>
-                <p>Análise de dados avançada e treinamento de modelos customizados para tomada de decisão baseada em
-                    dados.</p>
-            </div>
-            <div class="glass-card service-card reveal">
-                <i class="fas fa-handshake"></i>
-                <h3>Consultoria Especializada</h3>
-                <p>Orientação estratégica e técnica para identificar oportunidades de inovação e implementação
-                    tecnológica eficiente.</p>
-            </div>
-        </div>
-    </section>
+    <!-- ============================================================
+             5. MARKUP — Hybrid Dot Grid
+             ============================================================ -->
+    <div class="hero-bg-dots" aria-hidden="true">
+      <span class="dot" style="top: 12%;  left: 8%;  --delay: 0.3s;  --dur: 4.2s"></span>
+      <span class="dot" style="top: 18%;  left: 22%; --delay: 2.1s;  --dur: 5.5s"></span>
+      <span class="dot" style="top: 9%;   left: 41%; --delay: 1.4s;  --dur: 4.8s"></span>
+      <span class="dot" style="top: 22%;  left: 58%; --delay: 3.2s;  --dur: 6.1s"></span>
+      <span class="dot" style="top: 14%;  left: 73%; --delay: 0.8s;  --dur: 5.0s"></span>
+      <span class="dot" style="top: 7%;   left: 89%; --delay: 4.0s;  --dur: 4.5s"></span>
 
-    <section id="innovation" class="innovation">
-        <div class="innovation-visual reveal">
-            <img src="assets/images/innovation.png" alt="Inovação Engels Tech">
-        </div>
-        <div class="innovation-content reveal">
-            <div class="section-title" style="text-align: left; margin-bottom: 30px;">
-                <h2>Pioneirismo Tecnológico</h2>
-            </div>
-            <p style="margin-bottom: 25px; color: var(--text-dim);">A Engels Tech não apenas segue tendências. A empresa
-                as cria. Uma abordagem inovadora que combina criatividade com rigor técnico para entregar resultados que
-                superam expectativas.</p>
-            <div class="glass-card">
-                <h4>Pesquisa & Desenvolvimento</h4>
-                <p style="font-size: 0.9rem; margin-top: 10px;">A Engels Tech investe constantemente em novas
-                    tecnologias para garantir a melhor vantagem competitiva aos clientes.</p>
-            </div>
-        </div>
-    </section>
+      <span class="dot" style="top: 33%;  left: 4%;  --delay: 2.7s;  --dur: 5.8s"></span>
+      <span class="dot" style="top: 38%;  left: 17%; --delay: 1.1s;  --dur: 4.4s"></span>
+      <span class="dot" style="top: 31%;  left: 84%; --delay: 3.6s;  --dur: 5.2s"></span>
+      <span class="dot" style="top: 42%;  left: 93%; --delay: 0.5s;  --dur: 4.9s"></span>
 
-    <section id="about" style="text-align: center;">
-        <div class="container reveal">
-            <div class="section-title">
-                <h2>Onde a Engenharia encontra a Inovação</h2>
+      <span class="dot" style="top: 51%;  left: 6%;  --delay: 4.3s;  --dur: 5.6s"></span>
+      <span class="dot" style="top: 56%;  left: 95%; --delay: 1.8s;  --dur: 4.7s"></span>
+
+      <span class="dot" style="top: 64%;  left: 11%; --delay: 3.1s;  --dur: 5.3s"></span>
+      <span class="dot" style="top: 69%;  left: 26%; --delay: 0.6s;  --dur: 6.0s"></span>
+      <span class="dot" style="top: 72%;  left: 78%; --delay: 2.4s;  --dur: 4.6s"></span>
+      <span class="dot" style="top: 67%;  left: 91%; --delay: 4.7s;  --dur: 5.4s"></span>
+
+      <span class="dot" style="top: 81%;  left: 9%;  --delay: 1.6s;  --dur: 5.1s"></span>
+      <span class="dot" style="top: 87%;  left: 24%; --delay: 3.9s;  --dur: 4.3s"></span>
+      <span class="dot" style="top: 84%;  left: 47%; --delay: 0.2s;  --dur: 5.7s"></span>
+      <span class="dot" style="top: 91%;  left: 63%; --delay: 2.9s;  --dur: 4.8s"></span>
+      <span class="dot" style="top: 86%;  left: 81%; --delay: 1.3s;  --dur: 5.5s"></span>
+      <span class="dot" style="top: 93%;  left: 94%; --delay: 4.4s;  --dur: 4.5s"></span>
+
+      <span class="dot" style="top: 47%;  left: 32%; --delay: 3.5s;  --dur: 6.2s"></span>
+      <span class="dot" style="top: 60%;  left: 67%; --delay: 0.9s;  --dur: 5.9s"></span>
+    </div>
+
+    <!-- Eyebrow Badge (Glass Pill) -->
+    <div
+      class="fade-in-up relative z-20 inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10 bg-[#111113]/80 text-slate-300 text-[11px] sm:text-xs md:text-base font-medium mb-8 md:mb-12 backdrop-blur-md transition-colors hover:border-white/20 cursor-default whitespace-nowrap"
+      data-stagger-index="0">
+      <i class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-400" data-lucide="code-2" stroke-width="1.5"></i>
+      <span>Machine Learning · Automação · Engenharia de Dados</span>
+    </div>
+
+    <!-- Middle Core (Centered) -->
+    <div class="flex-1 flex flex-col items-center justify-center w-full">
+      <!-- H1 (Two Lines, Top White to Bottom Gradient) -->
+      <h1
+        class="fade-in-up relative z-20 leading-snug md:leading-[1.05] text-[28px] sm:text-4xl md:text-6xl font-semibold tracking-tight w-full max-w-[1400px] mx-auto mb-10 md:mb-12 bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-slate-400"
+        data-stagger-index="1">
+        <span class="xl:whitespace-nowrap">Machine Learning, automação e dados. </span>
+        <span class="xl:whitespace-nowrap">Do papel ao deploy.</span>
+      </h1>
+
+      <!-- Subhead (Body Large, Muted) -->
+      <p class="fade-in-up relative z-20 text-lg md:text-2xl font-normal text-slate-400 max-w-3xl mx-auto mb-10 md:mb-16 leading-relaxed"
+        data-stagger-index="2">
+        Consultoria técnica para empresas que precisam de soluções de IA funcionando — não em slides, não no papel.
+      </p>
+
+      <!-- CTAs (Primary Button + Secondary Text Link) -->
+      <div
+        class="fade-in-up relative z-20 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 w-full sm:w-auto"
+        data-stagger-index="3">
+        <!-- Primary Action -->
+        <a class="w-full sm:w-auto hover:bg-slate-200 transition-all flex items-center justify-center gap-2 text-lg font-semibold text-[#0a0a0c] bg-white rounded-full pt-4 pr-10 pb-4 pl-10"
+          href="#contato">
+          Discutir um projeto &rarr;
+        </a>
+
+        <!-- Secondary Action (Outline Button - Desktop) -->
+        <a class="hidden sm:flex px-10 py-4 rounded-full bg-transparent border border-white/15 text-white font-semibold text-lg hover:bg-white/5 transition-all items-center justify-center"
+          href="#servicos">
+          Ver serviços
+        </a>
+
+        <!-- Secondary Action (Text Link - Mobile) -->
+        <a class="sm:hidden flex items-center justify-center gap-2 text-[14px] text-slate-300 opacity-70 hover:opacity-100 transition-opacity font-medium mt-1"
+          href="#servicos">
+          Ver serviços <i class="w-3.5 h-3.5" data-lucide="arrow-right" stroke-width="2"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Stack Signature -->
+    <p class="relative z-20 mt-6 font-mono text-[10px] sm:text-[12px] tracking-tight text-slate-500 text-center mx-auto px-1 sm:px-4 max-w-full break-words leading-relaxed"
+      data-stagger-index="4">
+      Python · FastAPI · PostgreSQL · scikit-learn · LLMs · n8n
+    </p>
+
+    <!-- Decorative vertical falling lines -->
+    <div
+      class="absolute bottom-32 left-1/2 -translate-x-1/2 w-full max-w-md h-32 flex justify-center gap-8 opacity-20 pointer-events-none z-0">
+      <div class="w-[1px] h-full bg-gradient-to-b from-transparent via-white to-transparent"></div>
+      <div class="w-[1px] h-[80%] mt-4 bg-gradient-to-b from-transparent via-white to-transparent"></div>
+      <div class="w-[1px] h-[60%] mt-8 bg-gradient-to-b from-transparent via-white to-transparent"></div>
+    </div>
+
+
+
+  </main>
+
+  <!-- ==========================================
+       MÉTODO SECTION
+       ========================================== -->
+  <section id="metodo" class="z-10 pt-32 pb-24 px-4 relative">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- HEADER (centered) -->
+      <div class="text-center mb-16">
+        <span
+          class="ds-section-label inline-block text-sm md:text-base font-medium tracking-widest uppercase text-slate-400 mb-4">02
+          — Método</span>
+        <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-6">Como um projeto acontece</h2>
+        <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">Sem promessas vagas. Quatro
+          etapas claras, do diagnóstico ao sistema rodando — com você sabendo exatamente onde
+          está em cada momento.</p>
+      </div>
+
+      <!-- STEPPER HORIZONTAL HÍBRIDO (4 cards) -->
+      <div class="relative">
+        <!-- Connector line, desktop only -->
+        <div
+          class="hidden lg:block absolute top-[8.5rem] left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent z-0">
+        </div>
+
+        <!-- 4-column grid of cards -->
+        <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6 relative z-10">
+
+          <!-- Card 01 -->
+          <div
+            class="bg-[#111113]/50 border border-white/5 rounded-[2rem] p-6 lg:p-8 relative overflow-hidden hover:bg-[#151518] transition-all duration-300 group metodo-card flex flex-col"
+            data-stagger-index="0">
+            <div class="flex md:contents items-center justify-between mb-5 md:mb-0">
+              <div class="flex items-center gap-4 md:contents">
+                <div
+                  class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.15] md:mb-6 md:order-2">
+                  <i data-lucide="search"
+                    class="w-5 h-5 md:w-6 md:h-6 text-slate-300 transition-colors duration-300 group-hover:text-white"
+                    stroke-width="1.5"></i>
+                </div>
+                <h3 class="text-xl md:text-2xl font-semibold text-white tracking-tight md:mb-3 md:order-3">Diagnóstico
+                </h3>
+              </div>
+              <div
+                class="text-3xl md:text-5xl font-semibold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white/40 to-white/5 group-hover:from-blue-300/60 group-hover:to-blue-500/10 transition-all duration-500 md:mb-8 md:order-1">
+                01
+              </div>
             </div>
-            <p style="max-width: 800px; margin: 0 auto; color: var(--text-dim); font-size: 1.1rem;">
-                A Engels Tech nasceu com o propósito de democratizar o acesso às tecnologias mais avançadas do mundo.
-                Com foco absoluto em código e inteligência, a empresa transforma problemas complexos em soluções
-                elegantes.
+            <p class="text-sm md:text-base text-slate-400 leading-relaxed md:order-4">
+              Imersão técnica no problema. Avalio dados disponíveis, restrições do sistema atual e métrica de sucesso.
+              Você recebe um documento curto com o diagnóstico e o plano de ataque.
             </p>
-        </div>
-    </section>
+          </div>
 
-    <section id="contact" style="background: rgba(0,0,0,0.2);">
-        <div class="container contact-container">
-            <div class="contact-info reveal">
-                <h3>Interessado? <br>Contate a Engels Tech.</h3>
-                <p style="color: var(--text-dim); margin-bottom: 20px;">Pronto para transformar sua empresa com
-                    tecnologia de ponta? Preencha o formulário e receba um retorno em breve.</p>
-                <p style="color: var(--text-white); font-weight: 600; font-size: 1.1rem; margin-bottom: 30px;">
-                    <i class="fas fa-envelope" style="margin-right: 10px; color: var(--secondary);"></i>
-                    <a href="mailto:contato@engelstech.com.br"
-                        style="color: inherit; text-decoration: none;">contato@engelstech.com.br</a>
-                </p>
+          <!-- Card 02 -->
+          <div
+            class="bg-[#111113]/50 border border-white/5 rounded-[2rem] p-6 lg:p-8 relative overflow-hidden hover:bg-[#151518] transition-all duration-300 group metodo-card flex flex-col"
+            data-stagger-index="1">
+            <div class="flex md:contents items-center justify-between mb-5 md:mb-0">
+              <div class="flex items-center gap-4 md:contents">
+                <div
+                  class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.15] md:mb-6 md:order-2">
+                  <i data-lucide="flask-conical"
+                    class="w-5 h-5 md:w-6 md:h-6 text-slate-300 transition-colors duration-300 group-hover:text-white"
+                    stroke-width="1.5"></i>
+                </div>
+                <h3 class="text-xl md:text-2xl font-semibold text-white tracking-tight md:mb-3 md:order-3">Prova de
+                  conceito</h3>
+              </div>
+              <div
+                class="text-3xl md:text-5xl font-semibold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white/40 to-white/5 group-hover:from-blue-300/60 group-hover:to-blue-500/10 transition-all duration-500 md:mb-8 md:order-1">
+                02
+              </div>
             </div>
-            <div class="glass-card reveal">
-                <!-- Formspree Integration -->
-                <form action="https://formspree.io/f/meevrojj" method="POST" id="contact-form">
-                    <div class="form-group">
-                        <label for="name">Nome Completo</label>
-                        <input type="text" id="name" name="name" placeholder="Seu nome" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">E-mail</label>
-                        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Telefone</label>
-                        <input type="tel" id="phone" name="phone" placeholder="(00) 00000-0000" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Mensagem</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Como podemos ajudar?"
-                            required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn" id="submit-button">Enviar Mensagem</button>
-                </form>
+            <p class="text-sm md:text-base text-slate-400 leading-relaxed md:order-4">
+              Modelo, esquema ou automação funcional rodando em ambiente controlado, com dados reais. Não é slide, é
+              protótipo testável.
+            </p>
+          </div>
+
+          <!-- Card 03 -->
+          <div
+            class="bg-[#111113]/50 border border-white/5 rounded-[2rem] p-6 lg:p-8 relative overflow-hidden hover:bg-[#151518] transition-all duration-300 group metodo-card flex flex-col"
+            data-stagger-index="2">
+            <div class="flex md:contents items-center justify-between mb-5 md:mb-0">
+              <div class="flex items-center gap-4 md:contents">
+                <div
+                  class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.15] md:mb-6 md:order-2">
+                  <i data-lucide="server"
+                    class="w-5 h-5 md:w-6 md:h-6 text-slate-300 transition-colors duration-300 group-hover:text-white"
+                    stroke-width="1.5"></i>
+                </div>
+                <h3 class="text-xl md:text-2xl font-semibold text-white tracking-tight md:mb-3 md:order-3">Produção</h3>
+              </div>
+              <div
+                class="text-3xl md:text-5xl font-semibold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white/40 to-white/5 group-hover:from-blue-300/60 group-hover:to-blue-500/10 transition-all duration-500 md:mb-8 md:order-1">
+                03
+              </div>
             </div>
+            <p class="text-sm md:text-base text-slate-400 leading-relaxed md:order-4">
+              API, pipeline, observabilidade, testes. O que estava em documento vira sistema confiável que continua
+              funcionando depois que eu saio.
+            </p>
+          </div>
+
+          <!-- Card 04 -->
+          <div
+            class="bg-[#111113]/50 border border-white/5 rounded-[2rem] p-6 lg:p-8 relative overflow-hidden hover:bg-[#151518] transition-all duration-300 group metodo-card flex flex-col"
+            data-stagger-index="3">
+            <div class="flex md:contents items-center justify-between mb-5 md:mb-0">
+              <div class="flex items-center gap-4 md:contents">
+                <div
+                  class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.15] md:mb-6 md:order-2">
+                  <i data-lucide="life-buoy"
+                    class="w-5 h-5 md:w-6 md:h-6 text-slate-300 transition-colors duration-300 group-hover:text-white"
+                    stroke-width="1.5"></i>
+                </div>
+                <h3 class="text-xl md:text-2xl font-semibold text-white tracking-tight md:mb-3 md:order-3">Operação</h3>
+              </div>
+              <div
+                class="text-3xl md:text-5xl font-semibold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white/40 to-white/5 group-hover:from-blue-300/60 group-hover:to-blue-500/10 transition-all duration-500 md:mb-8 md:order-1">
+                04
+              </div>
+            </div>
+            <p class="text-sm md:text-base text-slate-400 leading-relaxed md:order-4">
+              Acompanhamento durante as primeiras semanas em produção. Ajustes, refinos e transferência de conhecimento
+              para o seu time.
+            </p>
+          </div>
+
         </div>
-    </section>
+      </div>
 
-    <footer style="padding: 40px 10%; text-align: center; border-top: 1px solid var(--glass-border);">
-        <p>&copy; 2026 Engels Tech. Todos os direitos reservados.</p>
-    </footer>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <!-- ==========================================
+       SERVIÇOS SECTION
+       ========================================== -->
+  <section id="servicos" class="z-10 pt-32 pb-24 px-4 relative">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- HEADER (centered) -->
+      <div class="text-center mb-20">
+        <span
+          class="ds-section-label inline-block text-sm md:text-base font-medium tracking-widest uppercase text-slate-400 mb-4">03
+          — Serviços</span>
+        <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-6">O que você pode contratar</h2>
+        <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">Quatro frentes que cobrem o ciclo
+          completo de uma solução de IA aplicada — do modelo ao sistema em produção. Cada uma sustenta um projeto
+          inteiro,
+          mas costumam se conectar em entregas reais.</p>
+      </div>
+
+      <!-- EDITORIAL LIST (4 services, vertical) -->
+      <div class="flex flex-col relative mask-vertical-faded">
+        <!-- Service 01 / 04 -->
+        <div class="relative group metodo-card" data-stagger-index="0">
+          <div
+            class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent">
+          </div>
+          <div
+            class="grid md:grid-cols-12 gap-8 py-10 md:py-12 px-4 hover:bg-white/[0.02] transition-colors duration-500 rounded-xl">
+            <div class="md:col-span-4">
+              <div class="text-sm font-mono text-slate-500 tracking-wider mb-4">01 / 04</div>
+              <h3
+                class="text-2xl md:text-3xl font-semibold text-white tracking-tight leading-tight group-hover:text-white transition-colors duration-500">
+                Machine Learning aplicado
+              </h3>
+            </div>
+            <div class="md:col-span-8 mt-6 md:mt-0">
+              <p class="text-base md:text-lg text-slate-400 leading-relaxed mb-6">
+                Modelos preditivos, classificadores, sistemas de recomendação e integração de LLMs em fluxos de
+                negócio. Do entendimento do problema à escolha do algoritmo certo - foco em modelos que funcionam com os
+                dados que você tem hoje.
+              </p>
+              <div class="text-xs font-mono text-slate-500 tracking-wide">
+                scikit-learn · XGBoost · Gemini · Anthropic · Pandas
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 02 / 04 -->
+        <div class="relative group metodo-card" data-stagger-index="1">
+          <div
+            class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent">
+          </div>
+          <div
+            class="grid md:grid-cols-12 gap-8 py-10 md:py-12 px-4 hover:bg-white/[0.02] transition-colors duration-500 rounded-xl">
+            <div class="md:col-span-4">
+              <div class="text-sm font-mono text-slate-500 tracking-wider mb-4">02 / 04</div>
+              <h3
+                class="text-2xl md:text-3xl font-semibold text-white tracking-tight leading-tight group-hover:text-white transition-colors duration-500">
+                Automação de processos
+              </h3>
+            </div>
+            <div class="md:col-span-8 mt-6 md:mt-0">
+              <p class="text-base md:text-lg text-slate-400 leading-relaxed mb-6">
+                Substituição de trabalho repetitivo por sistemas que executam sozinhos. Integração entre ferramentas,
+                processamento de documentos, fluxos baseados em regra ou em IA. Utilizando automações em Python ou n8n -
+                a escolha é técnica, conforme a necessidade do projeto.
+              </p>
+              <div class="text-xs font-mono text-slate-500 tracking-wide">
+                Python · n8n · APIs · Webhooks · Cron
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 03 / 04 -->
+        <div class="relative group metodo-card" data-stagger-index="2">
+          <div
+            class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent">
+          </div>
+          <div
+            class="grid md:grid-cols-12 gap-8 py-10 md:py-12 px-4 hover:bg-white/[0.02] transition-colors duration-500 rounded-xl">
+            <div class="md:col-span-4">
+              <div class="text-sm font-mono text-slate-500 tracking-wider mb-4">03 / 04</div>
+              <h3
+                class="text-2xl md:text-3xl font-semibold text-white tracking-tight leading-tight group-hover:text-white transition-colors duration-500">
+                Engenharia de dados
+              </h3>
+            </div>
+            <div class="md:col-span-8 mt-6 md:mt-0">
+              <p class="text-base md:text-lg text-slate-400 leading-relaxed mb-6">
+                Pipelines que coletam, transformam e disponibilizam dados de forma confiável. ETLs sob medida,
+                dashboards
+                para decisão, e a infraestrutura que sustenta tudo isso. O resultado: dados em que você pode confiar
+                para
+                tomar decisão e modelar.
+              </p>
+              <div class="text-xs font-mono text-slate-500 tracking-wide">
+                PostgreSQL · Pandas · Dashboards
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 04 / 04 -->
+        <div class="relative group metodo-card" data-stagger-index="3">
+          <div
+            class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent">
+          </div>
+          <div
+            class="grid md:grid-cols-12 gap-8 py-10 md:py-12 px-4 hover:bg-white/[0.02] transition-colors duration-500 rounded-xl">
+            <div class="md:col-span-4">
+              <div class="text-sm font-mono text-slate-500 tracking-wider mb-4">04 / 04</div>
+              <h3
+                class="text-2xl md:text-3xl font-semibold text-white tracking-tight leading-tight group-hover:text-white transition-colors duration-500">
+                Backend e integração
+              </h3>
+            </div>
+            <div class="md:col-span-8 mt-6 md:mt-0">
+              <p class="text-base md:text-lg text-slate-400 leading-relaxed mb-6">
+                APIs em Python para amarrar modelos, automações e dados em sistemas que outros softwares conseguem
+                consumir.
+                Endpoints documentados, autenticação, observabilidade. O que você prototipou em documento vira serviço
+                que o
+                seu time integra ao produto.
+              </p>
+              <div class="text-xs font-mono text-slate-500 tracking-wide">
+                FastAPI · PostgreSQL · Docker · OpenAPI · Pydantic
+              </div>
+            </div>
+          </div>
+          <div
+            class="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       CONTATO SECTION
+       ========================================== -->
+  <section id="contato" class="z-10 pt-32 pb-24 px-4 relative">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- HEADER (centered) -->
+      <div class="text-center mb-20">
+        <span
+          class="ds-section-label inline-block text-sm md:text-base font-medium tracking-widest uppercase text-slate-400 mb-4">04
+          — Contato</span>
+        <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-6">Conte sobre seu projeto.</h2>
+        <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">Quanto mais contexto você der,
+          melhor consigo te ajudar.</p>
+      </div>
+
+      <!-- TWO COLUMN: info on left, form on right -->
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-16">
+        <!-- LEFT COLUMN (info) - 5/12 cols on desktop -->
+        <div class="lg:col-span-5 metodo-card" data-stagger-index="0">
+          <h3 class="text-xl font-semibold text-white mb-6">O que esperar</h3>
+
+          <div class="space-y-6 text-slate-400 leading-relaxed">
+            <div>
+              <div class="text-sm font-mono text-slate-500 tracking-wider mb-2 uppercase">Resposta</div>
+              <p>Em até 24h em dias úteis. Se não receber, vale verificar o spam.</p>
+            </div>
+
+            <div>
+              <div class="text-sm font-mono text-slate-500 tracking-wider mb-2 uppercase">Primeira conversa</div>
+              <p>Call de 30 minutos sem compromisso, focada em entender o problema. Se fizer sentido, seguimos para uma
+                proposta.</p>
+            </div>
+
+            <div>
+              <div class="text-sm font-mono text-slate-500 tracking-wider mb-2 uppercase">Escopo</div>
+              <p>Atendo projetos contratados via PJ (empresas) e consultorias por hora (mentoria, revisão técnica,
+                tomada de decisões).</p>
+            </div>
+          </div>
+
+          <!-- Alternative channels -->
+          <div class="mt-10 pt-10 border-t border-white/5">
+            <div class="text-sm font-mono text-slate-500 tracking-wider mb-4 uppercase">Canais diretos</div>
+            <div class="flex flex-col space-y-3">
+              <a href="mailto:contato@engelstech.com.br"
+                class="inline-flex items-center gap-3 text-slate-300 hover:text-white transition-colors group">
+                <div
+                  class="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400 border border-blue-500/20 group-hover:scale-110 transition-transform">
+                  <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m22 2-7 20-4-9-9-4Z" />
+                    <path d="M22 2 11 13" />
+                  </svg>
+                </div>
+                <span>contato@engelstech.com.br</span>
+              </a>
+              <a href="https://www.linkedin.com/company/engels-tech/" target="_blank" rel="noopener"
+                class="inline-flex items-center gap-3 text-slate-300 hover:text-white transition-colors group">
+                <div
+                  class="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400 border border-blue-500/20 group-hover:scale-110 transition-transform">
+                  <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                    <rect width="4" height="12" x="2" y="9" />
+                    <circle cx="4" cy="4" r="2" />
+                  </svg>
+                </div>
+                <span>LinkedIn</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN (form) - 7/12 cols on desktop -->
+        <div class="lg:col-span-7 metodo-card" data-stagger-index="1">
+          <!--
+            FORMSPREE SETUP:
+            1. Sign up free at https://formspree.io
+            2. Create a new form, get your form ID (looks like "xyzabc123")
+            3. Replace YOUR_FORM_ID below with your actual ID
+            4. First submission requires email verification by Formspree
+          -->
+          <form action="https://formspree.io/f/meevrojj" method="POST" id="contact-form" class="space-y-5" novalidate>
+            <!-- Hidden field: subject for the email Formspree sends to your inbox -->
+            <input type="hidden" name="_subject" value="Novo lead via engelstech.com.br" />
+
+            <!-- 1. Nome -->
+            <div>
+              <label for="name" class="block text-sm font-medium text-slate-300 mb-2">
+                Nome <span class="text-slate-500">*</span>
+              </label>
+              <input type="text" id="name" name="name" required
+                class="w-full px-4 py-3 bg-[#111113]/50 border border-white/5 rounded-xl text-white placeholder:text-slate-600 focus:border-white/20 focus:bg-[#151518] focus:outline-none transition-colors"
+                placeholder="Seu nome" />
+            </div>
+
+            <!-- 2. Email -->
+            <div>
+              <label for="email" class="block text-sm font-medium text-slate-300 mb-2">
+                Email <span class="text-slate-500">*</span>
+              </label>
+              <input type="email" id="email" name="email" required
+                class="w-full px-4 py-3 bg-[#111113]/50 border border-white/5 rounded-xl text-white placeholder:text-slate-600 focus:border-white/20 focus:bg-[#151518] focus:outline-none transition-colors"
+                placeholder="seu@email.com" />
+            </div>
+
+            <!-- 3. Empresa (OPTIONAL) -->
+            <div>
+              <label for="company" class="block text-sm font-medium text-slate-300 mb-2">
+                Empresa <span class="text-slate-500 font-normal">(opcional)</span>
+              </label>
+              <input type="text" id="company" name="company"
+                class="w-full px-4 py-3 bg-[#111113]/50 border border-white/5 rounded-xl text-white placeholder:text-slate-600 focus:border-white/20 focus:bg-[#151518] focus:outline-none transition-colors"
+                placeholder="Deixe em branco se for atendimento pessoal" />
+            </div>
+
+            <!-- 4. Tipo de projeto -->
+            <div class="relative ds-custom-select" data-id="project_type">
+              <label for="project_type_trigger" class="block text-sm font-medium text-slate-300 mb-2">
+                Tipo de projeto <span class="text-slate-500">*</span>
+              </label>
+              <input type="hidden" name="project_type" id="project_type" required />
+              <button type="button" id="project_type_trigger"
+                class="w-full px-4 py-3 bg-[#111113]/50 border border-white/5 rounded-xl text-white flex items-center justify-between focus:border-white/20 focus:bg-[#151518] focus:outline-none transition-all">
+                <span class="text-slate-500">Selecione uma opção</span>
+                <i class="w-4 h-4 text-slate-400 transition-transform duration-300" data-lucide="chevron-down"></i>
+              </button>
+              <!-- Dropdown Menu -->
+              <div
+                class="absolute z-50 top-[calc(100%+8px)] left-0 w-full bg-[#111113]/95 border border-white/10 rounded-2xl p-2 backdrop-blur-xl shadow-2xl ds-dropdown-menu origin-top">
+                <div class="space-y-1">
+                  <div
+                    class="ds-option px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-xl cursor-pointer transition-colors"
+                    data-value="problema_definido">Tenho um problema definido e quero resolver</div>
+                  <div
+                    class="ds-option px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-xl cursor-pointer transition-colors"
+                    data-value="explorando">Estou explorando se IA/ML faz sentido para meu caso</div>
+                  <div
+                    class="ds-option px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-xl cursor-pointer transition-colors"
+                    data-value="melhorar_existente">Já tenho algo rodando e preciso melhorar/escalar</div>
+                  <div
+                    class="ds-option px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-xl cursor-pointer transition-colors"
+                    data-value="mentoria">Mentoria ou consultoria pontual (por hora)</div>
+                  <div
+                    class="ds-option px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-xl cursor-pointer transition-colors"
+                    data-value="outro">Outro / preciso entender melhor</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. Estágio -->
+            <div class="relative ds-custom-select" data-id="stage">
+              <label for="stage_trigger" class="block text-sm font-medium text-slate-300 mb-2">
+                Estágio <span class="text-slate-500">*</span>
+              </label>
+              <input type="hidden" name="stage" id="stage" required />
+              <button type="button" id="stage_trigger"
+                class="w-full px-4 py-3 bg-[#111113]/50 border border-white/5 rounded-xl text-white flex items-center justify-between focus:border-white/20 focus:bg-[#151518] focus:outline-none transition-all">
+                <span class="text-slate-500">Selecione uma opção</span>
+                <i class="w-4 h-4 text-slate-400 transition-transform duration-300" data-lucide="chevron-down"></i>
+              </button>
+              <!-- Dropdown Menu -->
+              <div
+                class="absolute z-50 top-[calc(100%+8px)] left-0 w-full bg-[#111113]/95 border border-white/10 rounded-2xl p-2 backdrop-blur-xl shadow-2xl ds-dropdown-menu origin-top">
+                <div class="space-y-1">
+                  <div
+                    class="ds-option px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-xl cursor-pointer transition-colors"
+                    data-value="avaliando">Já estamos avaliando fornecedores</div>
+                  <div
+                    class="ds-option px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-xl cursor-pointer transition-colors"
+                    data-value="proximas_semanas">Vamos começar nas próximas semanas</div>
+                  <div
+                    class="ds-option px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-xl cursor-pointer transition-colors"
+                    data-value="pesquisando">Estou pesquisando, sem prazo definido</div>
+                  <div
+                    class="ds-option px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-xl cursor-pointer transition-colors"
+                    data-value="sessao_pontual">Preciso de uma sessão pontual</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6. Mensagem -->
+            <div>
+              <label for="message" class="block text-sm font-medium text-slate-300 mb-2">
+                Mensagem <span class="text-slate-500">*</span>
+              </label>
+              <textarea id="message" name="message" required minlength="50" rows="6"
+                class="w-full px-4 py-3 bg-[#111113]/50 border border-white/5 rounded-xl text-white placeholder:text-slate-600 focus:border-white/20 focus:bg-[#151518] focus:outline-none transition-colors resize-y"
+                placeholder="Descreva brevemente o problema ou o que você está tentando resolver. Quanto mais contexto, melhor (mínimo 50 caracteres)."></textarea>
+              <div class="text-xs text-slate-500 mt-2" id="message-counter">0 / 50 caracteres mínimos</div>
+            </div>
+
+            <!-- Submit button -->
+            <div class="pt-2">
+              <button type="submit"
+                class="w-full sm:w-auto px-8 py-4 bg-white text-slate-900 font-semibold rounded-full hover:bg-slate-100 transition-colors flex items-center justify-center gap-2 group">
+                <span>Enviar mensagem</span>
+                <i class="w-4 h-4 transition-transform group-hover:translate-x-1" data-lucide="arrow-right"></i>
+              </button>
+            </div>
+
+            <!-- Privacy disclaimer -->
+            <p class="text-xs text-slate-500 leading-relaxed pt-2">
+              Seus dados são usados apenas para responder esta mensagem. Não compartilho, não vendo, não adiciono em
+              mailing list.
+            </p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Form Scripts -->
+  <script>
+    (function () {
+      // 1. Custom Dropdown Logic
+      const setupDropdown = (container) => {
+        const trigger = container.querySelector('button');
+        const hiddenInput = container.querySelector('input[type="hidden"]');
+        const triggerText = trigger.querySelector('span');
+
+        const toggle = (forceClose = false) => {
+          const arrow = trigger.querySelector('[data-lucide="chevron-down"]') || trigger.querySelector('svg');
+
+          if (forceClose || container.classList.contains('is-active')) {
+            container.classList.remove('is-active');
+            if (arrow) arrow.style.transform = 'rotate(0deg)';
+          } else {
+            // Close other dropdowns
+            document.querySelectorAll('.ds-custom-select').forEach(c => {
+              if (c !== container) {
+                const a = c.querySelector('[data-lucide="chevron-down"]') || c.querySelector('svg');
+                c.classList.remove('is-active');
+                if (a) a.style.transform = 'rotate(0deg)';
+              }
+            });
+            container.classList.add('is-active');
+            if (arrow) arrow.style.transform = 'rotate(180deg)';
+          }
+        };
+
+        trigger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggle();
+        });
+
+        const options = container.querySelectorAll('.ds-option');
+        options.forEach(opt => {
+          opt.addEventListener('click', () => {
+            const val = opt.dataset.value;
+            const text = opt.textContent;
+            hiddenInput.value = val;
+            triggerText.textContent = text;
+            triggerText.classList.remove('text-slate-500');
+            triggerText.classList.add('text-white');
+            toggle(true); // Force close
+          });
+        });
+
+        // Close on outside click
+        document.addEventListener('click', (e) => {
+          if (!container.contains(e.target)) {
+            toggle(true); // Force close
+          }
+        });
+      };
+
+      document.querySelectorAll('.ds-custom-select').forEach(setupDropdown);
+
+      // 2. Message character counter
+      const textarea = document.getElementById('message');
+      const counter = document.getElementById('message-counter');
+      if (textarea && counter) {
+        const update = () => {
+          const len = textarea.value.length;
+          if (len < 50) {
+            counter.textContent = `${len} / 50 caracteres mínimos`;
+            counter.className = 'text-xs text-slate-500 mt-2';
+          } else {
+            counter.textContent = `${len} caracteres ✓`;
+            counter.className = 'text-xs text-emerald-500/80 mt-2';
+          }
+        };
+        textarea.addEventListener('input', update);
+        update();
+      }
+
+      // 2. Formspree submission handling
+      const form = document.querySelector('form[action*="formspree.io"]');
+      if (form) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          // Basic validation check (since we use novalidate to handle it manually)
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+
+          const submitBtn = form.querySelector('button[type="submit"]');
+          const originalText = submitBtn.innerHTML;
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<span>Enviando...</span>';
+
+          try {
+            const response = await fetch(form.action, {
+              method: 'POST',
+              body: new FormData(form),
+              headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+              // Replace form with success message
+              form.innerHTML = `
+                <div class="py-12 text-center" role="status" aria-live="polite">
+                  <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
+                    <svg class="w-5 h-5 text-emerald-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </div>
+                  <h3 class="text-xl font-semibold text-white mb-2">Mensagem enviada.</h3>
+                  <p class="text-slate-400">Respondo em até 24h em dias úteis. Verifique a caixa de spam se demorar.</p>
+                </div>
+              `;
+            } else {
+              throw new Error('Submission failed');
+            }
+          } catch (err) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+            alert('Houve um erro ao enviar. Tente novamente ou envie um email direto para contato@engelstech.com.br');
+          }
+        });
+      }
+    })();
+  </script>
+
+  <script src="script.js"></script>
 </body>
 
 </html>

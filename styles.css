@@ -1,0 +1,194 @@
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0a0a0c;
+  color: #f8fafc;
+}
+
+/* Ambient soft vignette for background animation readiness */
+.hero-vignette {
+  box-shadow: inset 0 0 160px 40px #0a0a0c;
+}
+
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* ============================================================
+       1. CONTAINER
+       ============================================================ */
+.hero-bg-dots {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+
+  /* Soft radial mask: dots fade toward edges so center content
+         (H1, CTAs) keeps visual priority. */
+  -webkit-mask-image: radial-gradient(ellipse at center,
+      black 30%,
+      transparent 80%);
+  mask-image: radial-gradient(ellipse at center,
+      black 30%,
+      transparent 80%);
+}
+
+/* ============================================================
+       2. BASE GRID — pure CSS, zero DOM cost
+       ============================================================ */
+.hero-bg-dots::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, #134e4a 1px, transparent 1.5px);
+  background-size: 50px 50px;
+  background-position: 0 0;
+  opacity: 0.4;
+  animation: grid-breathe 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes grid-breathe {
+  from {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0.55;
+    transform: scale(1.02);
+  }
+}
+
+/* ============================================================
+       3. ORGANIC DOTS — 24 individually animated dots
+       ============================================================ */
+.hero-bg-dots .dot {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #2dd4bf;
+  /* Brighter blue for more intensity */
+  animation: dot-pulse calc(var(--dur, 5s) * 0.4) ease-in-out calc(var(--delay, 0s) * 0.4) infinite alternate;
+}
+
+@keyframes dot-pulse {
+  from {
+    opacity: 0.10;
+    transform: scale(0.8);
+    box-shadow: 0 0 0px 0px rgba(45, 212, 191, 0);
+  }
+
+  to {
+    opacity: 0.85;
+    transform: scale(2.5);
+    box-shadow: 0 0 6px 1px rgba(45, 212, 191, 0.4);
+  }
+}
+
+/* ============================================================
+       4. ACCESSIBILITY — reduced motion
+       ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-dots::before {
+    animation: none;
+    opacity: 0.35;
+  }
+
+  .hero-bg-dots .dot {
+    animation: none;
+    opacity: 0.5;
+    transform: scale(1);
+  }
+}
+
+/* ---------------------------------
+       SMOOTH SCROLL & LAYOUT
+       --------------------------------- */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+section[id] {
+  scroll-margin-top: 6rem;
+}
+
+/* ---------------------------------
+       FADE-IN ANIMATION
+       --------------------------------- */
+.metodo-card,
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 2000ms cubic-bezier(0.16, 1, 0.3, 1), transform 2000ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.metodo-card.is-visible,
+.fade-in-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ds-nav-link:hover,
+.ds-nav-link.is-active {
+  color: #60A5FA !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .metodo-card,
+  .fade-in-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.mask-vertical-faded {
+  mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+}
+
+/* ---------------------------------
+       FORM & DROPDOWN PATTERNS
+       --------------------------------- */
+.ds-custom-select {
+  z-index: 1;
+}
+
+.ds-custom-select.is-active {
+  z-index: 50;
+}
+
+.ds-dropdown-menu {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.is-active .ds-dropdown-menu {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+  pointer-events: auto !important;
+}
+
+.ds-option:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
