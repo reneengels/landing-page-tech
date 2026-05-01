@@ -1,5 +1,17 @@
+// Force scroll to top on reload
+if (history.scrollRestoration) {
+    history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+
 // Initialize Lucide icons
 lucide.createIcons();
+
+// Dynamic Year in Footer
+(function () {
+    const el = document.getElementById('footer-year');
+    if (el) el.textContent = new Date().getFullYear();
+})();
 
 // Mobile menu toggle logic
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
