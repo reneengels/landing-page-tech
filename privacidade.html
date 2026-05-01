@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Política de Privacidade · Engels Tech</title>
+  <meta name="description"
+    content="Política de privacidade da Engels Tech — como tratamos os dados pessoais coletados pelo site.">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/png" href="assets/logo_v2.png" />
+
+  <!-- Typography System -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Icon System (Lucide) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body
+  class="min-h-screen overflow-x-hidden selection:bg-blue-500/30 selection:text-white text-slate-50 relative bg-[#0a0a0c]">
+
+  <!-- ==========================================
+       NAVBAR (Glass Pill Pattern) - Reused from index.html
+       ========================================== -->
+  <header
+    class="fixed top-0 left-0 right-0 z-[100] bg-[#0a0a0c]/80 backdrop-blur-xl border-b border-white/5 h-20 md:h-24 flex items-center">
+    <nav class="w-[95%] max-w-5xl mx-auto relative">
+      <div
+        class="flex bg-[#111113]/80 border-white/10 border rounded-full pt-2 pr-2 pb-2 pl-3 backdrop-blur-xl items-center justify-between">
+        <!-- Logo Area -->
+        <a href="index.html" class="flex items-center gap-3 pl-2">
+          <img src="assets/logo_v2.png" alt="Engels Tech Logo" class="w-8 h-8 object-contain">
+          <span class="font-semibold text-lg tracking-tight text-white">Engels Tech</span>
+        </a>
+
+        <!-- Nav Links Center -->
+        <div class="hidden md:flex gap-8 text-base font-medium items-center">
+          <a class="ds-nav-link text-slate-400 hover:text-white transition-colors" href="index.html#metodo">Método</a>
+          <a class="ds-nav-link text-slate-400 hover:text-white transition-colors" href="index.html#servicos">Serviços</a>
+          <a class="ds-nav-link text-slate-400 hover:text-white transition-colors" href="index.html#contato">Contato</a>
+        </div>
+
+        <!-- Right CTA (Desktop) -->
+        <div class="hidden md:flex items-center">
+          <a class="hover:bg-slate-200 transition-colors text-base font-semibold text-[#0a0a0c] bg-white rounded-full pt-2.5 pr-6 pb-2.5 pl-6"
+            href="index.html#contato">
+            Discutir um projeto
+          </a>
+        </div>
+
+        <!-- Mobile Hamburger Button -->
+        <button id="mobile-menu-btn"
+          class="flex md:hidden items-center justify-center p-2 mr-1 text-white hover:bg-white/5 rounded-lg transition-colors">
+          <i class="w-6 h-6" data-lucide="menu"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Panel -->
+      <div id="mobile-menu"
+        class="hidden md:hidden absolute top-[calc(100%+16px)] left-0 w-full bg-[#111113]/95 border border-white/10 rounded-3xl p-6 backdrop-blur-xl shadow-2xl flex-col gap-6">
+        <div class="flex flex-col gap-5 text-center">
+          <a class="ds-nav-link text-lg font-medium text-slate-300 hover:text-white transition-colors"
+            href="index.html#metodo">Método</a>
+          <a class="ds-nav-link text-lg font-medium text-slate-300 hover:text-white transition-colors"
+            href="index.html#servicos">Serviços</a>
+          <a class="ds-nav-link text-lg font-medium text-slate-300 hover:text-white transition-colors"
+            href="index.html#contato">Contato</a>
+        </div>
+        <div class="w-full h-px bg-white/10"></div>
+        <a class="w-full text-center hover:bg-slate-200 transition-colors text-lg font-semibold text-[#0a0a0c] bg-white rounded-full py-3.5"
+          href="index.html#contato">
+          Discutir um projeto
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="pt-24 md:pt-28 relative">
+    <!-- Decorative side lines -->
+    <div class="absolute inset-y-0 left-0 right-0 pointer-events-none overflow-hidden">
+      <div class="max-w-4xl mx-auto h-full relative">
+        <div class="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
+        <div class="absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent">
+        </div>
+      </div>
+    </div>
+
+    <article class="max-w-3xl mx-auto px-4 pt-16 pb-24 relative z-10">
+
+      <!-- BACK TO HOME (Top) -->
+      <div class="mb-12">
+        <a href="index.html" class="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
+          <i class="w-4 h-4" data-lucide="arrow-left"></i>
+          <span>Voltar para a página inicial</span>
+        </a>
+      </div>
+
+      <!-- HEADER -->
+      <header class="mb-16">
+        <div class="text-xs font-mono text-slate-500 tracking-wider uppercase mb-4">Documento legal</div>
+        <h1 class="text-4xl md:text-5xl font-semibold text-white tracking-tight mb-6">Política de Privacidade</h1>
+        <p class="text-slate-400 leading-relaxed">Última atualização: <span id="last-updated">30 de abril de 2026</span>
+        </p>
+      </header>
+
+      <!-- CONTENT -->
+      <div class="prose-content space-y-10">
+        <p class="text-slate-300 leading-relaxed mb-4">
+          A <strong class="text-white font-semibold">Engels Tech</strong> valoriza a sua privacidade e a transparência
+          no tratamento de dados. Esta Política de Privacidade explica como coletamos, usamos, armazenamos e protegemos
+          os seus dados pessoais ao visitar nosso site e interagir com nossos serviços de consultoria em tecnologia, em
+          conformidade com a <strong class="text-white font-semibold">Lei Geral de Proteção de Dados (LGPD) - Lei nº
+            13.709/2018</strong>.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-semibold text-white tracking-tight mb-4 mt-12">1. Dados Coletados</h2>
+        <p class="text-slate-300 leading-relaxed mb-4">Coletamos informações que você nos fornece voluntariamente e
+          dados gerados automaticamente:</p>
+        <ul class="list-disc list-outside pl-6 space-y-2 text-slate-300 leading-relaxed mb-4 marker:text-slate-600">
+          <li><strong class="text-white font-semibold">Informações de Contato:</strong> Nome, e-mail e telefone,
+            fornecidos quando você preenche formulários de contato ou solicita orçamentos.</li>
+          <li><strong class="text-white font-semibold">Dados de Navegação:</strong> Endereço IP, tipo de dispositivo,
+            navegador, páginas visitadas e tempo de permanência, coletados para melhorar a performance do site e
+            segurança.</li>
+        </ul>
+
+        <h2 class="text-2xl md:text-3xl font-semibold text-white tracking-tight mb-4 mt-12">2. Finalidade do Tratamento
+        </h2>
+        <p class="text-slate-300 leading-relaxed mb-4">Utilizamos seus dados exclusivamente para:</p>
+        <ul class="list-disc list-outside pl-6 space-y-2 text-slate-300 leading-relaxed mb-4 marker:text-slate-600">
+          <li>Responder a solicitações de orçamentos e dúvidas técnicas.</li>
+          <li>Enviar comunicações sobre nossos serviços de consultoria (mediante seu consentimento).</li>
+          <li>Garantir a segurança cibernética da nossa plataforma e prevenir fraudes.</li>
+        </ul>
+
+        <h2 class="text-2xl md:text-3xl font-semibold text-white tracking-tight mb-4 mt-12">3. Base Legal para o
+          Tratamento</h2>
+        <p class="text-slate-300 leading-relaxed mb-4">
+          Processamos seus dados pessoais com base no seu <strong
+            class="text-white font-semibold">consentimento</strong> (ao preencher formulários), para a <strong
+            class="text-white font-semibold">execução de contrato</strong> (ou procedimentos preliminares a pedido do
+          cliente) e para o nosso <strong class="text-white font-semibold">legítimo interesse</strong> em otimizar a
+          experiência do usuário.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-semibold text-white tracking-tight mb-4 mt-12">4. Compartilhamento de Dados
+        </h2>
+        <p class="text-slate-300 leading-relaxed mb-4">A Engels Tech não comercializa seus dados pessoais. O
+          compartilhamento ocorre apenas com:</p>
+        <ul class="list-disc list-outside pl-6 space-y-2 text-slate-300 leading-relaxed mb-4 marker:text-slate-600">
+          <li>Provedores de serviços essenciais (como hospedagem, gestão de domínio e ferramentas de análise de
+            tráfego).</li>
+          <li>Autoridades judiciais ou governamentais, quando houver obrigação legal ou regulatória.</li>
+        </ul>
+
+        <div class="rounded-2xl border border-white/5 bg-[#111113]/50 p-6 my-6">
+          <h2 class="text-2xl font-semibold text-white tracking-tight mb-4 mt-0">5. Seus Direitos (Art. 18 da LGPD)</h2>
+          <p class="text-slate-300 leading-relaxed mb-4">Você, como titular dos dados, pode a qualquer momento
+            solicitar:</p>
+          <ul class="list-disc list-outside pl-6 space-y-2 text-slate-300 leading-relaxed mb-4 marker:text-slate-600">
+            <li>Confirmação da existência de tratamento e acesso aos dados.</li>
+            <li>Correção de dados incompletos, inexatos ou desatualizados.</li>
+            <li>Eliminação de dados tratados com base no seu consentimento.</li>
+            <li>Revogação do consentimento previamente fornecido.</li>
+          </ul>
+        </div>
+
+        <h2 class="text-2xl md:text-3xl font-semibold text-white tracking-tight mb-4 mt-12">6. Segurança e Armazenamento
+        </h2>
+        <p class="text-slate-300 leading-relaxed mb-4">
+          Implementamos medidas técnicas e administrativas, como criptografia e controles de acesso rigorosos, para
+          proteger seus dados contra acessos não autorizados e situações acidentais ou ilícitas de destruição, perda ou
+          alteração.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-semibold text-white tracking-tight mb-4 mt-12">7. Alterações nesta Política
+        </h2>
+        <p class="text-slate-300 leading-relaxed mb-4">
+          Esta política pode ser atualizada para refletir mudanças em nossas práticas ou por motivos legais.
+          Recomendamos a revisão periódica deste documento.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-semibold text-white tracking-tight mb-4 mt-12">8. Contato e Encarregado de
+          Dados (DPO)</h2>
+        <p class="text-slate-300 leading-relaxed mb-4">
+          Para exercer seus direitos ou tirar dúvidas sobre como tratamos seus dados, entre em contato através de:
+        </p>
+        <ul class="list-disc list-outside pl-6 space-y-2 text-slate-300 leading-relaxed mb-4 marker:text-slate-600">
+          <li><strong class="text-white font-semibold">E-mail:</strong> <a href="mailto:contato@engelstech.com.br"
+              class="text-slate-100 underline decoration-white/30 hover:decoration-white underline-offset-4 transition-colors">contato@engelstech.com.br</a>
+          </li>
+          <li><strong class="text-white font-semibold">Website:</strong> <a href="https://www.engelstech.com.br"
+              target="_blank" rel="noopener"
+              class="text-slate-100 underline decoration-white/30 hover:decoration-white underline-offset-4 transition-colors">www.engelstech.com.br</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- BACK TO HOME (Bottom) -->
+      <div class="mt-20 pt-10 border-t border-white/5">
+        <a href="index.html" class="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
+          <i class="w-4 h-4" data-lucide="arrow-left"></i>
+          <span>Voltar para a página inicial</span>
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <!-- ==========================================
+       FOOTER - Reused from index.html
+       ========================================== -->
+  <footer class="relative z-10 border-t border-white/5 mt-20 pt-16 pb-8 px-4">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- ZONE 1: Main block -->
+      <div class="grid md:grid-cols-12 gap-10 md:gap-16 mb-16">
+        <div class="md:col-span-4">
+          <a href="index.html" class="flex items-center gap-3 mb-4 group">
+            <img src="assets/logo_v2.png" alt="Engels Tech Logo" class="w-8 h-8 object-contain">
+            <span class="text-xl font-semibold text-white tracking-tight">Engels Tech</span>
+          </a>
+          <p class="text-slate-400 leading-relaxed max-w-sm">
+            Consultoria técnica em IA aplicada.
+          </p>
+        </div>
+
+        <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div>
+            <div class="text-xs font-mono text-slate-500 tracking-wider uppercase mb-4">Navegação</div>
+            <ul class="space-y-3">
+              <li><a href="index.html#metodo" class="text-slate-400 hover:text-white transition-colors">Método</a></li>
+              <li><a href="index.html#servicos" class="text-slate-400 hover:text-white transition-colors">Serviços</a></li>
+              <li><a href="index.html#contato" class="text-slate-400 hover:text-white transition-colors">Contato</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="text-xs font-mono text-slate-500 tracking-wider uppercase mb-4">Contato</div>
+            <ul class="space-y-3">
+              <li><a href="mailto:contato@engelstech.com.br"
+                  class="text-slate-400 hover:text-white transition-colors">contato@engelstech.com.br</a></li>
+              <li><a href="https://www.linkedin.com/company/engels-tech/" target="_blank" rel="noopener"
+                  class="text-slate-400 hover:text-white transition-colors">LinkedIn</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="text-xs font-mono text-slate-500 tracking-wider uppercase mb-4">Legal</div>
+            <ul class="space-y-3">
+              <li><a href="privacidade.html" class="text-slate-100 font-medium">Privacidade</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-white/5 text-center">
+        <p class="text-sm text-slate-500">© <span id="footer-year">2026</span> Engels Tech. Todos os direitos
+          reservados.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

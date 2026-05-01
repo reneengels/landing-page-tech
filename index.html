@@ -96,7 +96,7 @@
   <!-- ==========================================
        HERO SECTION
        ========================================== -->
-  <main
+  <main id="hero"
     class="flex flex-col min-h-screen text-center w-full z-10 pt-24 md:pt-28 pr-4 pb-12 md:pb-24 pl-4 relative items-center justify-between">
 
     <!-- ============================================================
@@ -687,6 +687,70 @@
 
     </div>
   </section>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="relative z-10 border-t border-white/5 mt-20 pt-16 pb-8 px-4">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- ZONE 1: Main block (logo+tagline left, link groups right) -->
+      <div class="grid md:grid-cols-12 gap-10 md:gap-16 mb-16">
+        <!-- Left: brand block -->
+        <div class="md:col-span-4">
+          <!-- Logo + name (reuse exact same component from navbar) -->
+          <a href="#hero" class="flex items-center gap-3 mb-4 group">
+            <img src="assets/logo_v2.png" alt="Engels Tech Logo" class="w-8 h-8 object-contain">
+            <span class="text-xl font-semibold text-white tracking-tight">Engels Tech</span>
+          </a>
+
+          <!-- Tagline -->
+          <p class="text-slate-400 leading-relaxed max-w-sm">
+            Consultoria técnica em IA aplicada.
+          </p>
+        </div>
+
+        <!-- Right: link groups -->
+        <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          <!-- Group 1 — Navegação -->
+          <div>
+            <div class="text-xs font-mono text-slate-500 tracking-wider uppercase mb-4">Navegação</div>
+            <ul class="space-y-3">
+              <li><a href="#metodo" class="text-slate-400 hover:text-white transition-colors">Método</a></li>
+              <li><a href="#servicos" class="text-slate-400 hover:text-white transition-colors">Serviços</a></li>
+              <li><a href="#contato" class="text-slate-400 hover:text-white transition-colors">Contato</a></li>
+            </ul>
+          </div>
+
+          <!-- Group 2 — Contato -->
+          <div>
+            <div class="text-xs font-mono text-slate-500 tracking-wider uppercase mb-4">Contato</div>
+            <ul class="space-y-3">
+              <li><a href="mailto:contato@engelstech.com.br"
+                  class="text-slate-400 hover:text-white transition-colors">contato@engelstech.com.br</a></li>
+              <li><a href="https://www.linkedin.com/company/engels-tech/" target="_blank" rel="noopener"
+                  class="text-slate-400 hover:text-white transition-colors">LinkedIn</a></li>
+            </ul>
+          </div>
+
+          <!-- Group 3 — Legal -->
+          <div>
+            <div class="text-xs font-mono text-slate-500 tracking-wider uppercase mb-4">Legal</div>
+            <ul class="space-y-3">
+              <li><a href="privacidade.html" class="text-slate-400 hover:text-white transition-colors">Privacidade</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ZONE 2: Bottom bar (copyright only) -->
+      <div class="pt-8 border-t border-white/5 text-center">
+        <p class="text-sm text-slate-500">© <span id="footer-year">2026</span> Engels Tech. Todos os direitos reservados.
+        </p>
+      </div>
+
+    </div>
+  </footer>
 
   <!-- Form Scripts -->
   <script>
